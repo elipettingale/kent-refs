@@ -101,13 +101,14 @@ export const getAllPages = async () => {
   return data(response).pages.edges;
 };
 
-export const getPageBySlug = async (slug: string) => {
+export const getPageBySlug = async (slug: string, acfFields: string = '') => {
   let response = await client.query({
     query: gql`
       query GetPageBySlug($slug: ID! = "${slug}") {
         page(id: $slug, idType: URI) {
           title
           content
+		  ${acfFields}
           seo {
             title
             fullHead
@@ -120,31 +121,11 @@ export const getPageBySlug = async (slug: string) => {
   return data(response).page;
 };
 
-export const getACFPageBySlug = async (slug: string, fields: string) => {
-  let response = await client.query({
-    query: gql`
-      query GetACFPageBySlug($slug: ID! = "${slug}") {
-        page(id: $slug, idType: URI) {
-          title
-          content
-          ${fields}
-          seo {
-            title
-            fullHead
-          }
-        }
-      }
-    `,
-  });
-
-  return data(response).page;
-};
-
-export const getAllNewsPosts = async () => {
+export const getAllPosts = async (postType: string) => {
   let response = await client.query({
     query: gql`
       {
-        posts(first: 10000) {
+        ${postType}(first: 10000) {
           edges {
             node {
               slug
@@ -155,10 +136,10 @@ export const getAllNewsPosts = async () => {
     `,
   });
 
-  return response.data.posts.edges;
+  return response.data[postType].edges;
 };
 
-export const getNewsPosts = async (after = null) => {
+export const getPosts = async (postType: string, after = null) => {
   let search = "first: 12";
 
   if (after) {
@@ -168,7 +149,7 @@ export const getNewsPosts = async (after = null) => {
   let response = await client.query({
     query: gql`
       {
-        posts(${search}) {
+        ${postType}(${search}) {
           pageInfo {
             hasNextPage
             endCursor
@@ -189,12 +170,12 @@ export const getNewsPosts = async (after = null) => {
   return data(response).posts;
 };
 
-export const getNewsPostBySlug = async (slug: string) => {
+export const getPostBySlug = async (postType: string, slug: string, acfFields: string = '') => {
   let response = await client.query({
     query: gql`
       ${mediaItem}
       query GetPostData($slug: ID = "${slug}") {
-        post(id: $slug, idType: URI) {
+        ${postType}(id: $slug, idType: URI) {
           id
           title
           link
@@ -204,6 +185,7 @@ export const getNewsPostBySlug = async (slug: string) => {
             }
           }
           content
+		  ${acfFields}
           seo {
             fullHead
             title
@@ -213,5 +195,5 @@ export const getNewsPostBySlug = async (slug: string) => {
     `,
   });
 
-  return data(response).post;
+  return data(response)[postType];
 };

@@ -1,25 +1,26 @@
-import { getACFPageBySlug, getGlobal } from "@/src/lib/api";
+import { getPageBySlug } from "@/src/lib/api";
 import { GetStaticProps } from "next";
 
 export default function Page({ page }: any) {
-  const { address, phoneNumber, email } = page.contactUsFields;
+  const { foo, address, phoneNumber, email } = page.contactUsDetails;
 
   return (
     <div>
       <h1>{page.title}</h1>
       <div>
-        <p>Address: {address}</p>
+        <p>Foo: {foo}</p>
+        {/* <p>Address: {address}</p>
         <p>Phone Number: {phoneNumber}</p>
-        <p>Email: {email}</p>
+        <p>Email: {email}</p> */}
       </div>
     </div>
   );
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const page = await getACFPageBySlug(
+  const page = await getPageBySlug(
     "contact-us",
-    `contactUsFields {
+    `contactUsDetails {
         foo
     }`
   );
