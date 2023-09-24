@@ -1,0 +1,9 @@
+.Footer {
+  @apply h-24 text-white;
+}
+
+.Menu {
+  .MenuItem {
+    @apply underline hover:text-blue-400;
+  }
+}

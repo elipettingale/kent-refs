@@ -1,8 +1,19 @@
 import { getPageBySlug } from "@/src/lib/api";
+import { PageType } from "@/src/lib/types";
 import { GetStaticProps } from "next";
 
-export default function Page({ page }: any) {
-  const { foo, address, phoneNumber, email } = page.contactUsDetails;
+interface Props {
+	page: ContactUsPageType
+}
+
+interface ContactUsPageType extends PageType {
+  contactUsFields: {
+    foo: string;
+  };
+}
+
+export default function Page({ page }: Props) {
+  const { foo } = page.contactUsFields;
 
   return (
     <div>
@@ -20,7 +31,7 @@ export default function Page({ page }: any) {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const page = await getPageBySlug(
     "contact-us",
-    `contactUsDetails {
+    `contactUsFields {
         foo
     }`
   );

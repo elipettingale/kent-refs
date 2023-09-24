@@ -6,16 +6,25 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { renderContent } from "@/src/lib/helpers";
 
 export default function Page({ event }: any) {
+    const { date } = event.eventFields;
+
   return (
     <div>
-      <h1>{event.title}</h1>
+        <div className="mb-2">
+            <h1>{event.title}</h1>
+            <p>{date}</p>
+        </div>
       {renderContent(event.content)}
     </div>
   );
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const event = await getPostBySlug('event', params?.slug as string);
+  const event = await getPostBySlug('event', params?.slug as string, `
+    eventFields {
+        date
+    }
+  `);
 
   return {
     notFound: event === null,

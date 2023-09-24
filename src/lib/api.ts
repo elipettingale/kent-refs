@@ -43,10 +43,7 @@ export const getThemeOptions = async () => {
       query GetThemeOptions {
         themeOptions {
           themeOptionsFields {
-            logo
-            address
-            email
-            openingHours
+            foo
           }
         }
       }
