@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { PaginatedPostType, PaginatedPostsType } from "../lib/types";
+import { getPosts } from "../lib/api";
 
 type Return = [
   [{ node: PaginatedPostType }],
@@ -9,8 +10,8 @@ type Return = [
 ];
 
 export default function useLoadMorePosts(
-  { edges, pageInfo }: PaginatedPostsType,
-  apiFunction: any
+  postType: string,
+  { edges, pageInfo }: PaginatedPostsType
 ): Return {
   const [posts, setPosts] = useState(edges);
   const [isLoading, setIsLoading] = useState(false);
@@ -25,7 +26,9 @@ export default function useLoadMorePosts(
 
     setIsLoading(true);
 
-    const posts = await apiFunction(cursor as string);
+    console.log('postType')
+
+    const posts = await getPosts(postType, cursor as string);
 
     if (posts.pageInfo.hasNextPage) {
       setCursor(posts.pageInfo.endCursor);

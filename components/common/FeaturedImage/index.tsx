@@ -1,5 +1,5 @@
 import Image from "next/image";
-const styles = require("./index.module.scss");
+const styles = require("./index.module.css");
 
 export default function FeaturedImage({
   mediaItem: { mediaItemUrl, altText, mediaDetails },

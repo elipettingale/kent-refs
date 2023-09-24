@@ -136,7 +136,7 @@ export const getAllPosts = async (postType: string) => {
   return response.data[postType].edges;
 };
 
-export const getPosts = async (postType: string, after = null) => {
+export const getPosts = async (postType: string, after: null | string = null) => {
   let search = "first: 12";
 
   if (after) {
