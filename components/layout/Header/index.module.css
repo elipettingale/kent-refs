@@ -1,8 +1,8 @@
 .Header {
-  @apply bg-black text-white;
+  @apply bg-black text-white ;
 
-  &__Inner {
-    @apply p-5;
+  .Header__Inner {
+    @apply p-6 container m-auto flex justify-between;
   }
 }
 

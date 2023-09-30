@@ -18,15 +18,7 @@ export default function Header({ menu }: Props) {
   return (
     <header className={styles.Header}>
       <div className={styles.Header__Inner}>
-        <button onClick={() => setIsOpen(true)}>Burger Menu</button>
-      </div>
-      <div
-        className={BEM(styles, "Menu", {
-          isOpen: isOpen,
-        })}
-      >
-        <button onClick={() => setIsOpen(false)}>X</button>
-        <nav>
+      <nav>
           <ul>
             <li
               className={BEM(styles, "MenuItem", {
@@ -51,7 +43,43 @@ export default function Header({ menu }: Props) {
             ))}
           </ul>
         </nav>
+        <div>
+          <button onClick={() => setIsOpen(true)}>Burger Menu</button>
+        </div>
       </div>
+
+      <div
+          className={BEM(styles, "Menu", {
+            isOpen: isOpen,
+          })}
+        >
+          <button onClick={() => setIsOpen(false)}>X</button>
+          <nav>
+            <ul>
+              <li
+                className={BEM(styles, "MenuItem", {
+                  isActive: router.pathname === "/",
+                })}
+              >
+                <Link href="/" onClick={() => setIsOpen(false)}>
+                  Home
+                </Link>
+              </li>
+              {items.map(({ id, path, label }: any) => (
+                <li
+                  key={id}
+                  className={BEM(styles, "MenuItem", {
+                    isActive: router.pathname + "/" === path,
+                  })}
+                >
+                  <Link href={path} onClick={() => setIsOpen(false)}>
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
     </header>
   );
 }

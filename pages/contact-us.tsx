@@ -1,9 +1,9 @@
-import { getPageBySlug } from "@/src/lib/api";
+import { getGlobal, getPageBySlug } from "@/src/lib/api";
 import { PageType } from "@/src/lib/types";
 import { GetStaticProps } from "next";
 
 interface Props {
-	page: ContactUsPageType
+  page: ContactUsPageType;
 }
 
 interface ContactUsPageType extends PageType {
@@ -29,8 +29,9 @@ export default function Page({ page }: Props) {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const global = await getGlobal();
   const page = await getPageBySlug(
-    "contact-us",
+    "/contact-us",
     `contactUsFields {
         foo
     }`
@@ -38,7 +39,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   return {
     props: {
+      global: global,
       page: page,
+      seo: page?.seo,
     },
     revalidate: 10,
   };

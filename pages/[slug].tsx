@@ -12,12 +12,15 @@ export default function Page({ page }: any) {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const global = await getGlobal();
   const page = await getPageBySlug(params?.slug as string);
 
   return {
     notFound: page === null,
     props: {
+      global: global,
       page: page,
+      seo: page?.seo,
     },
     revalidate: 10,
   };

@@ -11,15 +11,17 @@ export default function Footer({ menu }: Props) {
 
   return (
     <footer className={styles.Footer}>
-      <nav className={styles.Menu}>
-        <ul>
-          {items.map(({ id, path, label }) => (
-            <li key={id} className={styles.MenuItem}>
-              <Link href={path}>{label}</Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
+      <div className={styles.Footer__Inner}>
+        <nav className={styles.Menu}>
+          <ul>
+            {items.map(({ id, path, label }) => (
+              <li key={id} className={styles.MenuItem}>
+                <Link href={path}>{label}</Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
     </footer>
   );
 }
