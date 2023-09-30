@@ -1,15 +1,14 @@
 import { gql } from "@apollo/client";
 import client from "./client";
 
-function data(response: any)
-{
-	if (response.errors) {
-		response.errors.forEach((error: any) => {
-			throw new Error(error.message);
-		})
-	}
+function data(response: any) {
+  if (response.errors) {
+    response.errors.forEach((error: any) => {
+      throw new Error(error.message);
+    });
+  }
 
-	return response.data;
+  return response.data;
 }
 
 const mediaItem = gql`
@@ -98,14 +97,14 @@ export const getAllPages = async () => {
   return data(response).pages.edges;
 };
 
-export const getPageBySlug = async (slug: string, acfFields: string = '') => {
+export const getPageBySlug = async (slug: string, acfFields: string = "") => {
   let response = await client.query({
     query: gql`
       query GetPageBySlug($slug: ID! = "${slug}") {
         page(id: $slug, idType: URI) {
           title
           content
-		  ${acfFields}
+		      ${acfFields}
           seo {
             title
             fullHead
@@ -136,7 +135,10 @@ export const getAllPosts = async (postType: string) => {
   return response.data[postType].edges;
 };
 
-export const getPosts = async (postType: string, after: null | string = null) => {
+export const getPosts = async (
+  postType: string,
+  after: null | string = null
+) => {
   let search = "first: 12";
 
   if (after) {
@@ -167,7 +169,11 @@ export const getPosts = async (postType: string, after: null | string = null) =>
   return data(response).posts;
 };
 
-export const getPostBySlug = async (postType: string, slug: string, acfFields: string = '') => {
+export const getPostBySlug = async (
+  postType: string,
+  slug: string,
+  acfFields: string = ""
+) => {
   let response = await client.query({
     query: gql`
       ${mediaItem}
@@ -182,7 +188,7 @@ export const getPostBySlug = async (postType: string, slug: string, acfFields: s
             }
           }
           content
-		  ${acfFields}
+		      ${acfFields}
           seo {
             fullHead
             title
