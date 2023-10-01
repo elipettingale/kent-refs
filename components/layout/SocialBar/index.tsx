@@ -1,4 +1,4 @@
-const styles = require("./index.module.scss");
+const styles = require("./index.module.css");
 
 interface Props {
   twitterUrl?: string;
