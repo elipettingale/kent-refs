@@ -1,27 +1,5 @@
-import { MenuType } from "@/src/lib/types";
-import Link from "next/link";
-const styles = require("./index.module.css");
+const styles = require("./index.module.scss");
 
-interface Props {
-  menu: MenuType | null;
-}
-
-export default function Footer({ menu }: Props) {
-  let items = menu?.menuItems?.nodes ?? [];
-
-  return (
-    <footer className={styles.Footer}>
-      <div className={styles.Footer__Inner}>
-        <nav className={styles.Menu}>
-          <ul>
-            {items.map(({ id, path, label }) => (
-              <li key={id} className={styles.MenuItem}>
-                <Link href={path}>{label}</Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </div>
-    </footer>
-  );
+export default function Footer() {
+  return <footer className={styles.Footer}></footer>;
 }

@@ -4,10 +4,11 @@ import Header from "@/components/layout/Header";
 import Head from "next/head";
 import parse from "html-react-parser";
 import { createContext } from "react";
+import { ThemeOptionsType } from "@/src/lib/types";
 
-export const ThemeContext = createContext<{ options: any } | undefined>(
-  undefined
-);
+export const ThemeContext = createContext<
+  { options: ThemeOptionsType } | undefined
+>(undefined);
 
 interface Props {
   Component: any;
@@ -37,11 +38,11 @@ function App({ Component, pageProps }: Props) {
       </Head>
       <div>
         <ThemeContext.Provider value={{ options: themeOptions }}>
-          <Header menu={mainMenu} />
+          <Header />
           <main>
             <Component {...pageProps} />
           </main>
-          <Footer menu={footerMenu} />
+          <Footer />
         </ThemeContext.Provider>
       </div>
     </>

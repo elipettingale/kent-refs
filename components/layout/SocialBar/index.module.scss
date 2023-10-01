@@ -1,0 +1,19 @@
+.SocialBar {
+  @apply bg-slate text-white py-1.5;
+
+  &__Inner {
+    @apply container mx-auto;
+
+    ul {
+      @apply flex gap-1;
+
+      li {
+        @apply bg-slate-400 text-slate-300 h-7 w-7 flex justify-center items-center rounded;
+
+        &:hover {
+          @apply cursor-pointer text-white bg-[var(--color)];
+        }
+      }
+    }
+  }
+}
