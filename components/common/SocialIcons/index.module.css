@@ -7,5 +7,13 @@
     &:hover {
       @apply text-white bg-[var(--color)];
     }
+
+    a {
+      @apply block h-full w-full  p-1.5;
+
+      svg {
+        @apply w-full h-full;
+      }
+    }
   }
 }

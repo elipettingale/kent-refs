@@ -6,7 +6,7 @@
   }
 
   &__Search {
-    @apply bg-slate-400 text-slate-300 h-7 w-7 flex justify-center items-center rounded cursor-pointer;
+    @apply bg-slate-400 text-slate-300 h-7 w-7 flex justify-center items-center rounded cursor-pointer p-1.5;
 
     &:hover {
       @apply bg-blue text-white;
