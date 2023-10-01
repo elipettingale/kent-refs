@@ -1,0 +1,15 @@
+.TopBar {
+  @apply bg-slate text-white py-1.5;
+
+  &__Inner {
+    @apply container mx-auto flex justify-between;
+  }
+
+  &__Search {
+    @apply bg-slate-400 text-slate-300 h-7 w-7 flex justify-center items-center rounded cursor-pointer;
+
+    &:hover {
+      @apply bg-blue text-white;
+    }
+  }
+}

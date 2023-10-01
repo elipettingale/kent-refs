@@ -1,5 +1,5 @@
 import useThemeOptions from "@/src/hooks/useThemeOptions";
-import SocialBar from "../SocialBar";
+import TopBar from "../TopBar";
 
 const styles = require("./index.module.css");
 
@@ -8,7 +8,7 @@ export default function Header() {
 
   return (
     <div className={styles.Header}>
-      <SocialBar {...theme.social} />
+      <TopBar />
     </div>
   );
 }
