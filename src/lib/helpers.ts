@@ -22,3 +22,23 @@ export function renderContent(content: string | null) {
 
   return parse(content);
 }
+
+export function flatListToHierarchical(data = <any[]>[]) {
+  const tree = <any[]>[];
+  const childrenOf = <any>{};
+
+  data.forEach((item: any) => {
+    const newItem = { ...item };
+    const { ["id"]: id, ["parentId"]: parentId = 0 } = newItem;
+
+    console.log(id, parentId);
+
+    childrenOf[id] = childrenOf[id] || [];
+    newItem["children"] = childrenOf[id];
+    parentId
+      ? (childrenOf[parentId] = childrenOf[parentId] || []).push(newItem)
+      : tree.push(newItem);
+  });
+
+  return tree;
+}

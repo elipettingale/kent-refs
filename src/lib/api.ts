@@ -26,8 +26,8 @@ const mediaItem = gql`
 
 export const getGlobal = async () => {
   let themeOptions = await getThemeOptions();
-  let mainMenu = await getMenu("MAIN MENU");
-  let footerMenu = await getMenu("FOOTER MENU");
+  let mainMenu = await getMenu("main-menu");
+  let footerMenu = await getMenu("footer-menu");
 
   return {
     themeOptions,
@@ -59,7 +59,7 @@ export const getMenu = async (id: string) => {
   let response = await client.query({
     query: gql`
       query GetMenu {
-        menu(id: "${id}", idType: NAME) {
+        menu(id: "${id}", idType: SLUG) {
           id
           menuItems {
             nodes {
@@ -67,6 +67,7 @@ export const getMenu = async (id: string) => {
               order
               path
               label
+              parentId
             }
           }
         }
