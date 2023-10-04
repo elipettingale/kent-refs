@@ -6,6 +6,10 @@
   --blue: #20273f;
 }
 
+body {
+  background-color: #dfdfdf;
+}
+
 main {
   @apply py-12 px-6 container m-auto;
 }

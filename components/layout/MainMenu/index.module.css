@@ -1,0 +1,42 @@
+.Wrapper {
+  @apply bg-white;
+}
+
+.Inner {
+  @apply container mx-auto flex justify-between;
+}
+
+.Logo {
+  @apply py-2 h-20;
+}
+
+.Menu {
+  @apply flex items-center;
+
+  ul {
+    @apply h-full flex;
+  }
+
+  li {
+    @apply h-full;
+  }
+
+  a {
+    @apply relative flex justify-center items-center h-full p-4 text-black;
+    overflow: hidden;
+
+    &:before {
+      @apply block w-full bg-slate-300 h-1 absolute top-0 left-0;
+      content: "";
+      transform: translateX(-101%);
+    }
+
+    &:hover {
+      @apply bg-slate text-white;
+
+      &:before {
+        transform: translateX(0);
+      }
+    }
+  }
+}

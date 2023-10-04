@@ -38,11 +38,11 @@ function App({ Component, pageProps }: Props) {
       </Head>
       <div>
         <ThemeContext.Provider value={{ options: themeOptions }}>
-          <Header />
+          <Header menu={mainMenu} />
           <main>
             <Component {...pageProps} />
           </main>
-          <Footer />
+          <Footer menu={footerMenu} />
         </ThemeContext.Provider>
       </div>
     </>
