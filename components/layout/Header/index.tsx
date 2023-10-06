@@ -9,7 +9,6 @@ interface Props {
 }
 
 export default function Header({ menu }: Props) {
-  console.log("menu", menu);
   return (
     <div className={styles.Header}>
       <TopBar />

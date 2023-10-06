@@ -1,5 +1,7 @@
 import { gql } from "@apollo/client";
 import client from "./client";
+import { mediaItem } from "./fragments";
+import { importFragments } from "./helpers";
 
 function data(response: any) {
   if (response.errors) {
@@ -10,19 +12,6 @@ function data(response: any) {
 
   return response.data;
 }
-
-const mediaItem = gql`
-  fragment mediaItem on MediaItem {
-    id
-    altText
-    mediaItemUrl
-    title
-    mediaDetails {
-      height
-      width
-    }
-  }
-`;
 
 export const getGlobal = async () => {
   let themeOptions = await getThemeOptions();
@@ -104,6 +93,7 @@ export const getAllPages = async () => {
 export const getPageBySlug = async (slug: string, acfFields: string = "") => {
   let response = await client.query({
     query: gql`
+      ${importFragments(acfFields)}
       query GetPageBySlug($slug: ID! = "${slug}") {
         page(id: $slug, idType: URI) {
           title

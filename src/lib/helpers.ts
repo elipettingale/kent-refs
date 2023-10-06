@@ -1,3 +1,6 @@
+import { gql } from "@apollo/client";
+import { altMediaItem, mediaItem } from "./fragments";
+
 const parse = require("html-react-parser");
 
 export function BEM(styles: any, root: string, modifiers: object) {
@@ -41,4 +44,17 @@ export function flatListToHierarchical(data = <any[]>[]) {
   });
 
   return tree;
+}
+
+export function importFragments(query: string) {
+  const fragments = (query.match(/\.\.\.(.*)/g) ?? []) as string[];
+
+  if (fragments.length === 0) {
+    return "";
+  }
+
+  return gql`
+    ${fragments.includes("...mediaItem") ? mediaItem : ""}
+    ${fragments.includes("...altMediaItem") ? altMediaItem : ""}
+  `;
 }
