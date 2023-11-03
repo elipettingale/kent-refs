@@ -37,7 +37,9 @@ export default function MainMenu({ menu }: Props) {
   return (
     <div className={styles.Wrapper}>
       <div className={styles.Inner}>
-        <Logo className={styles.Logo} />
+        <Link href="/">
+          <Logo className={styles.Logo} />
+        </Link>
         <nav className={styles.Menu}>
           <ul>{items.map((item) => renderMenuItem(item))}</ul>
         </nav>
