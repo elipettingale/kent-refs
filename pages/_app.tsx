@@ -5,6 +5,13 @@ import Head from "next/head";
 import parse from "html-react-parser";
 import { createContext } from "react";
 import { ThemeOptionsType } from "@/src/lib/types";
+import { Roboto_Condensed } from "next/font/google";
+
+const roboto = Roboto_Condensed({
+  subsets: ["latin"],
+  weight: ["300", "400", "700"],
+  variable: "--font-roboto",
+});
 
 export const ThemeContext = createContext<
   { options: ThemeOptionsType } | undefined
@@ -35,8 +42,13 @@ function App({ Component, pageProps }: Props) {
       <Head>
         <title>{seo?.title}</title>
         {seo?.fullHead ? parse(seo.fullHead) : null}
+        <style jsx global>{`
+          .font-roboto {
+            font-family: ${roboto.style.fontFamily};
+          }
+        `}</style>
       </Head>
-      <div>
+      <div className={`${roboto.variable}`}>
         <ThemeContext.Provider value={{ options: themeOptions }}>
           <Header menu={mainMenu} />
           <main>

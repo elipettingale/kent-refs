@@ -1,0 +1,19 @@
+.Wrapper {
+  width: 90%;
+  max-width: 1400px;
+  margin: auto;
+}
+
+.Step {
+  @apply flex-1 flex p-6;
+
+  > div:first-child {
+    @apply text-6xl text-slate-400 font-bold mr-4 pl-4;
+  }
+
+  &:not(:first-child) {
+    > div:first-child {
+      @apply border-l-2 border-slate-400;
+    }
+  }
+}

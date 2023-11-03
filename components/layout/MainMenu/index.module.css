@@ -21,8 +21,7 @@
     @apply h-full;
 
     > a {
-      @apply relative flex justify-center items-center h-full p-4 text-black;
-      overflow: hidden;
+      @apply relative flex justify-center items-center h-full p-4 text-slate-300 font-bold uppercase font-roboto overflow-hidden;
 
       &:before {
         @apply block w-full bg-slate-300 h-1 absolute top-0 left-0;

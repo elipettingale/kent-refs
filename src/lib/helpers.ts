@@ -1,5 +1,5 @@
 import { gql } from "@apollo/client";
-import { altMediaItem, mediaItem } from "./fragments";
+import { mediaItem } from "./fragments";
 
 const parse = require("html-react-parser");
 
@@ -55,6 +55,5 @@ export function importFragments(query: string) {
 
   return gql`
     ${fragments.includes("...mediaItem") ? mediaItem : ""}
-    ${fragments.includes("...altMediaItem") ? altMediaItem : ""}
   `;
 }

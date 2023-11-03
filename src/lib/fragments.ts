@@ -12,9 +12,3 @@ export const mediaItem = gql`
     }
   }
 `;
-
-export const altMediaItem = gql`
-  fragment altMediaItem on MediaItem {
-    altText
-  }
-`;

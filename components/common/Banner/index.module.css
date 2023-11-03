@@ -1,0 +1,14 @@
+.Overlay {
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.Content {
+  height: 100%;
+  width: 90%;
+  max-width: 900px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
