@@ -1,0 +1,13 @@
+.Item {
+  @apply overflow-hidden rounded;
+
+  > * {
+    transition: all 200ms ease-in-out;
+  }
+
+  &:hover {
+    > * {
+      scale: 1.1;
+    }
+  }
+}

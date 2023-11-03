@@ -1,0 +1,28 @@
+.Wrapper {
+  width: 90%;
+  max-width: 1400px;
+  margin: auto;
+}
+
+.Step {
+  @apply flex-1 flex p-6 relative overflow-hidden cursor-pointer;
+
+  > div:first-child {
+    @apply text-6xl text-slate-400 font-bold mr-4;
+  }
+
+  &:not(:last-child) {
+    @apply border-r-2 border-slate-400;
+  }
+
+  &::after {
+    @apply block absolute bottom-0 left-0 h-[10px] bg-slate-300 w-full content-[''] translate-y-[100%];
+    transition: transform 150ms ease-in-out;
+  }
+
+  &:hover {
+    &:after {
+      @apply translate-y-0;
+    }
+  }
+}

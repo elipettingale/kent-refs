@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
 import client from "./client";
-import { mediaItem } from "./fragments";
+import { media } from "./fragments";
 import { importFragments } from "./helpers";
 
 function data(response: any) {
@@ -170,7 +170,7 @@ export const getPostBySlug = async (
 ) => {
   let response = await client.query({
     query: gql`
-      ${mediaItem}
+      ${media}
       query GetPostData($slug: ID = "${slug}") {
         ${postType}(id: $slug, idType: URI) {
           id
@@ -178,7 +178,7 @@ export const getPostBySlug = async (
           link
           featuredImage {
             node {
-              ...mediaItem
+              ...media
             }
           }
           content

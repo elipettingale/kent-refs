@@ -1,8 +1,8 @@
-import { MediaItemType } from "@/src/lib/types";
+import { MediaType } from "@/src/lib/types";
 import styles from "./index.module.css";
 
 interface Props {
-  backgroundImage: MediaItemType;
+  backgroundImage: MediaType;
   titleTop: string;
   titleBottom: string;
 }

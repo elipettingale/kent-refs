@@ -13,7 +13,7 @@ interface ContactUsPageType extends PageType {
 }
 
 export default function Page({ page }: Props) {
-  const { foo, bar } = page.contactUsFields;
+  const { foo } = page.contactUsFields;
 
   console.log(foo);
 
@@ -21,12 +21,7 @@ export default function Page({ page }: Props) {
     <div>
       <h1>{page.title}</h1>
       <div>
-        {foo && foo.mediaItemUrl && <img src={foo.mediaItemUrl} />}
-        {foo && foo.altText}
-        <p>{bar}</p>
-        {/* <p>Address: {address}</p>
-        <p>Phone Number: {phoneNumber}</p>
-        <p>Email: {email}</p> */}
+        <p>{foo}</p>
       </div>
     </div>
   );
@@ -39,7 +34,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     `contactUsFields {
         bar
         foo {
-          ...mediaItem
+          ...media
         }
     }`
   );

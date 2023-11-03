@@ -1,3 +1,5 @@
+import { Url } from "url";
+
 export interface PageType {
   title: string;
   content: string;
@@ -7,7 +9,7 @@ export interface PageType {
   };
 }
 
-export interface MediaItemType {
+export interface MediaType {
   id: string;
   altText: string;
   mediaItemUrl: string;
@@ -23,7 +25,7 @@ export interface PostType {
   title: string;
   link: string;
   featuredImage: {
-    node: MediaItemType;
+    node: MediaType;
   };
   content: string;
   seo: {
@@ -69,4 +71,10 @@ export interface ThemeOptionsType {
     facebookUrl: string;
     twitterUrl: string;
   };
+}
+
+export interface LinkType {
+  url: Url;
+  title: String;
+  target: "" | "_blank";
 }
