@@ -2,10 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --blue: #20273f;
-}
+html {
+  font-size: 1rem;
 
-body {
-  background-color: #dfdfdf;
+  @media screen and (max-width: 600px) {
+    font-size: 0.75rem;
+  }
 }

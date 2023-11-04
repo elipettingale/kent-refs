@@ -1,6 +1,35 @@
-import { default as NextImage, ImageProps } from "next/image";
+import { MediaType } from "@/src/lib/types";
+import { default as NextImage } from "next/image";
 
-export default function Image({ src, ...rest }: ImageProps) {
-  let dockerSrc = src.toString().replace("localhost:8001", "wordpress");
-  return <NextImage src={dockerSrc} {...rest} />;
+interface Props {
+  mediaItem: MediaType;
+  fill?: true | null;
+}
+
+export default function Image({ mediaItem, fill = null, ...rest }: Props) {
+  let dockerSrc = mediaItem.mediaItemUrl
+    .toString()
+    .replace("localhost:8001", "wordpress");
+
+  if (fill) {
+    return (
+      <NextImage
+        src={dockerSrc}
+        alt={mediaItem.altText}
+        fill
+        style={{ objectFit: "cover" }}
+        {...rest}
+      />
+    );
+  }
+
+  return (
+    <NextImage
+      src={dockerSrc}
+      alt={mediaItem.altText}
+      width={mediaItem.mediaDetails.width}
+      height={mediaItem.mediaDetails.height}
+      {...rest}
+    />
+  );
 }

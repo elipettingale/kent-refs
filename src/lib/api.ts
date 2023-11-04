@@ -131,17 +131,18 @@ export const getAllPosts = async (postType: string) => {
 
 export const getPosts = async (
   postType: string,
-  after: null | string = null
+  options: { first?: Number; after?: String } = {}
 ) => {
-  let search = "first: 12";
+  let search = `first: ${options.first ?? 12}`;
 
-  if (after) {
-    search += `, after: "${after}"`;
+  if (options.after) {
+    search += `, after: "${options.after}"`;
   }
 
   let response = await client.query({
     query: gql`
-      {
+      ${media}
+      query GetPosts {
         ${postType}(${search}) {
           pageInfo {
             hasNextPage
@@ -153,6 +154,12 @@ export const getPosts = async (
                   title
                   slug
                   link
+                  excerpt
+                  featuredImage {
+                    node {
+                      ...media
+                    }
+                  }
               }
           }
         }

@@ -39,6 +39,10 @@ export interface PaginatedPostType {
   title: string;
   slug: string;
   link: string;
+  excerpt: string;
+  featuredImage: {
+    node: MediaType;
+  };
 }
 
 export interface PaginatedPostsType {

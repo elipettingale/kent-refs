@@ -26,9 +26,9 @@ export default function useLoadMorePosts(
 
     setIsLoading(true);
 
-    console.log('postType')
+    console.log("postType");
 
-    const posts = await getPosts(postType, cursor as string);
+    const posts = await getPosts(postType, { after: cursor as string });
 
     if (posts.pageInfo.hasNextPage) {
       setCursor(posts.pageInfo.endCursor);
