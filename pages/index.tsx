@@ -1,15 +1,15 @@
 import Banner from "@/components/blocks/Banner";
 import Gallery from "@/components/blocks/Gallery";
 import LatestNews from "@/components/blocks/LatestNews";
+import LatestTweets from "@/components/blocks/LatestTweets";
 import Steps from "@/components/blocks/Steps";
 import { getGlobal, getPageBySlug, getPosts } from "@/src/lib/api";
-import { renderContent } from "@/src/lib/helpers";
-import { MediaType, PageType, PostType } from "@/src/lib/types";
+import { MediaType, PageType, PaginatedPostsType } from "@/src/lib/types";
 import { GetStaticProps } from "next";
 
 interface Props {
   page: HomePageType;
-  latestNews: PostType[];
+  latestNews: PaginatedPostsType;
 }
 
 interface HomePageType extends PageType {
@@ -17,13 +17,14 @@ interface HomePageType extends PageType {
     banner: any;
     steps: any[];
     gallery: MediaType[];
+    social: {
+      backgroundImage: MediaType;
+    };
   };
 }
 
 export default function Page({ page, latestNews }: Props) {
   let fields = page.homeFields;
-
-  console.log(latestNews);
 
   return (
     <div>
@@ -38,6 +39,16 @@ export default function Page({ page, latestNews }: Props) {
           <div className="py-6">
             <LatestNews posts={latestNews} />
           </div>
+        </div>
+      </div>
+      <div
+        style={{
+          backgroundImage: `url(${fields.social.backgroundImage.mediaItemUrl})`,
+        }}
+      >
+        <div className="container mx-auto py-12">
+          <p className="text-4xl text-white font-roboto mb-12">Recent Tweets</p>
+          <LatestTweets />
         </div>
       </div>
     </div>
@@ -66,6 +77,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 			}
       gallery {
         ...media
+      }
+      social {
+        backgroundImage {
+          ...media
+        }
       }
 		}`
   );

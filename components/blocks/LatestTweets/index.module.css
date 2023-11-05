@@ -1,0 +1,7 @@
+.Wrapper {
+  @apply flex gap-8;
+
+  > * {
+    @apply flex-1;
+  }
+}

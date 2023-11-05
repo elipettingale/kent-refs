@@ -23,7 +23,7 @@ export default function LatestNews({ posts }: Props) {
             <div className="w-[45%] relative aspect-square">
               <Image mediaItem={post.featuredImage.node} fill />
             </div>
-            <div className="w-[55%] p-6 ">
+            <div className="w-[55%] p-8">
               <div className="flex flex-col gap-2 mb-6">
                 <p className="text-3xl font-roboto">{post.title}</p>
                 <p className="text-lg text-grey">27th June, 2020</p>

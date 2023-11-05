@@ -1,0 +1,27 @@
+.Tweet {
+  @apply text-white;
+
+  &--grey {
+    @apply bg-grey bg-opacity-50;
+
+    .Top {
+      @apply border-grey-400;
+    }
+  }
+
+  &--blue {
+    @apply bg-[#57b5ff];
+
+    .Top {
+      @apply border-grey-200;
+    }
+  }
+}
+
+.Top {
+  @apply italic border-b p-4;
+}
+
+.Bottom {
+  @apply p-4;
+}
