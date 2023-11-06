@@ -1,5 +1,5 @@
 import TopBar from "../TopBar";
-import MainMenu from "../MainMenu";
+import HeaderMenu from "../HeaderMenu";
 import { MenuType } from "@/src/lib/types";
 
 const styles = require("./index.module.css");
@@ -12,7 +12,7 @@ export default function Header({ menu }: Props) {
   return (
     <div className={styles.Header}>
       <TopBar />
-      <MainMenu menu={menu} />
+      <HeaderMenu menu={menu} />
     </div>
   );
 }

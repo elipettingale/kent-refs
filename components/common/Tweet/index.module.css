@@ -1,5 +1,5 @@
 .Tweet {
-  @apply text-white;
+  @apply text-white rounded-md;
 
   &--grey {
     @apply bg-grey bg-opacity-50;

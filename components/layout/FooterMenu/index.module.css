@@ -1,0 +1,15 @@
+.Menu {
+  @apply flex items-center;
+
+  > ul {
+    @apply h-full flex gap-6;
+  }
+
+  &__Item {
+    @apply uppercase;
+
+    &:hover {
+      @apply text-blue;
+    }
+  }
+}

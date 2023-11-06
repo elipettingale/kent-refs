@@ -9,7 +9,7 @@ interface Props {
   menu: MenuType;
 }
 
-export default function MainMenu({ menu }: Props) {
+export default function HeaderMenu({ menu }: Props) {
   const items = flatListToHierarchical(menu.menuItems.nodes);
 
   const renderMenuItem = ({ id, path, label, children }: any) => {

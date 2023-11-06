@@ -1,2 +1,7 @@
 .Footer {
+  @apply bg-slate-500 py-12 text-grey-200;
+}
+
+.Column {
+  @apply w-[33.33%] flex flex-col items-start gap-4;
 }

@@ -31,9 +31,16 @@ export const getThemeOptions = async () => {
       query GetThemeOptions {
         themeOptions {
           themeOptionsFields {
+            contact {
+              phone
+              email
+            }
             social {
               twitterUrl
               facebookUrl
+            }
+            footer {
+              text
             }
           }
         }

@@ -71,9 +71,16 @@ export interface MenuType {
 }
 
 export interface ThemeOptionsType {
+  contact: {
+    phone: string;
+    email: string;
+  };
   social: {
     facebookUrl: string;
     twitterUrl: string;
+  };
+  footer: {
+    text: string;
   };
 }
 
