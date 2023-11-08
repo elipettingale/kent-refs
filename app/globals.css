@@ -26,11 +26,38 @@ html {
   max-width: unset;
 
   .wp-block-columns {
-    display: flex;
-    gap: 1rem;
+    @apply flex gap-2;
   }
 
   .wp-block-column {
     flex: 1;
+  }
+
+  .wp-block-gallery {
+    @apply grid grid-cols-3 gap-6;
+
+    .wp-block-image {
+      @apply relative overflow-hidden cursor-pointer;
+      margin: 0;
+
+      figcaption {
+        @apply absolute bottom-0 left-0 w-full bg-slate-500 text-white bg-opacity-75 px-4 py-3 translate-y-[100%];
+        transition: all 200ms ease-in-out;
+      }
+
+      img {
+        transition: all 200ms ease-in-out;
+      }
+
+      &:hover {
+        img {
+          scale: 1.1;
+        }
+
+        figcaption {
+          @apply translate-y-[none];
+        }
+      }
+    }
   }
 }
