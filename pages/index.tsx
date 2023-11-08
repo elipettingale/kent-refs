@@ -1,4 +1,4 @@
-import Banner from "@/components/blocks/Banner";
+import FullBanner from "@/components/blocks/FullBanner";
 import Gallery from "@/components/blocks/Gallery";
 import LatestNews from "@/components/blocks/LatestNews";
 import LatestTweets from "@/components/blocks/LatestTweets";
@@ -28,7 +28,7 @@ export default function Page({ page, latestNews }: Props) {
 
   return (
     <div>
-      <Banner {...fields.banner} />
+      <FullBanner {...fields.banner} />
       <Steps className="translate-y-[-50%]" steps={fields.steps} />
       <div className="container mx-auto mb-12">
         <Gallery images={fields.gallery} />

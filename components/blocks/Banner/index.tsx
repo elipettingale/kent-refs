@@ -1,32 +1,33 @@
 import { MediaType } from "@/src/lib/types";
 import styles from "./index.module.css";
+import useThemeOptions from "@/src/hooks/useThemeOptions";
 
 interface Props {
-  backgroundImage: MediaType;
-  titleTop: string;
-  titleBottom: string;
+  backgroundImage?: MediaType;
+  title: string;
 }
 
-export default function Banner({
-  backgroundImage,
-  titleTop,
-  titleBottom,
-}: Props) {
+export default function Banner({ backgroundImage, title }: Props) {
+  const [themeOptions] = useThemeOptions();
+
+  console.log(themeOptions);
+
+  let backgroundSrc =
+    backgroundImage?.mediaItemUrl ??
+    themeOptions.defaults.bannerImage.mediaItemUrl;
+
   return (
-    <div className="h-[100vh] max-h-[600px]">
+    <div className="h-[250px]">
       <div
         className="h-full bg-cover"
         style={{
-          backgroundImage: `url(${backgroundImage.mediaItemUrl})`,
+          backgroundImage: `url(${backgroundSrc})`,
         }}
       >
         <div className={styles.Overlay}>
           <div className={styles.Content}>
-            <p className="text-4xl font-roboto uppercase text-blue font-bold">
-              {titleTop}
-            </p>
-            <p className="text-6xl font-roboto uppercase text-white font-bold">
-              {titleBottom}
+            <p className="text-3xl font-roboto uppercase text-white font-bold">
+              {title}
             </p>
           </div>
         </div>

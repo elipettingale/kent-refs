@@ -9,3 +9,28 @@ html {
     font-size: 0.75rem;
   }
 }
+
+.container-lg {
+  @apply container;
+}
+
+.container-md {
+  max-width: 1200px;
+}
+
+.container-sm {
+  max-width: 900px;
+}
+
+.prose {
+  max-width: unset;
+
+  .wp-block-columns {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .wp-block-column {
+    flex: 1;
+  }
+}

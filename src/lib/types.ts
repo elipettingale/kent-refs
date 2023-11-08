@@ -79,6 +79,9 @@ export interface ThemeOptionsType {
     facebookUrl: string;
     twitterUrl: string;
   };
+  defaults: {
+    bannerImage: MediaType;
+  };
   footer: {
     text: string;
   };

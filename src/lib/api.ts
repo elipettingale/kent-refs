@@ -28,6 +28,7 @@ export const getGlobal = async () => {
 export const getThemeOptions = async () => {
   let response = await client.query({
     query: gql`
+      ${media}
       query GetThemeOptions {
         themeOptions {
           themeOptionsFields {
@@ -38,6 +39,11 @@ export const getThemeOptions = async () => {
             social {
               twitterUrl
               facebookUrl
+            }
+            defaults {
+              bannerImage {
+                ...media
+              }
             }
             footer {
               text
