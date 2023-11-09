@@ -4,5 +4,5 @@ import { ThemeOptionsType } from "../lib/types";
 
 export default function useThemeOptions(): [ThemeOptionsType] {
   const themeContext = useContext(ThemeContext);
-  return [themeContext?.options];
+  return [themeContext!.options];
 }

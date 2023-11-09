@@ -21,7 +21,11 @@ export default function LatestNews({ posts }: Props) {
         {leftPosts.map(({ node: post }) => (
           <Card key={post.id} className="flex">
             <div className="w-[45%] relative aspect-square">
-              <Image mediaItem={post.featuredImage.node} fill />
+              <Image
+                src={post.featuredImage.node.mediaItemUrl}
+                alt={post.featuredImage.node.altText}
+                fill
+              />
             </div>
             <div className="w-[55%] p-8">
               <div className="flex flex-col gap-2 mb-6">
@@ -41,7 +45,11 @@ export default function LatestNews({ posts }: Props) {
         {rightPosts.map(({ node: post }) => (
           <Card key={post.id} className="flex flex-col">
             <div className="relative aspect-[5/3]">
-              <Image mediaItem={post.featuredImage.node} fill />
+              <Image
+                src={post.featuredImage.node.mediaItemUrl}
+                alt={post.featuredImage.node.altText}
+                fill
+              />
             </div>
             <div className="p-6">
               <p className="text-2xl font-roboto">{post.title}</p>

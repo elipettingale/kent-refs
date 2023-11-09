@@ -2,20 +2,29 @@ import { MediaType } from "@/src/lib/types";
 import { default as NextImage } from "next/image";
 
 interface Props {
-  mediaItem: MediaType;
+  src: string;
+  alt: string;
+  height?: number;
+  width?: number;
+  className?: string;
   fill?: true | null;
 }
 
-export default function Image({ mediaItem, fill = null, ...rest }: Props) {
-  let dockerSrc = mediaItem.mediaItemUrl
-    .toString()
-    .replace("localhost:8001", "wordpress");
+export default function Image({
+  src,
+  alt,
+  width,
+  height,
+  fill = null,
+  ...rest
+}: Props) {
+  let dockerSrc = src.toString().replace("localhost:8001", "wordpress");
 
   if (fill) {
     return (
       <NextImage
         src={dockerSrc}
-        alt={mediaItem.altText}
+        alt={alt}
         fill
         style={{ objectFit: "cover" }}
         {...rest}
@@ -26,9 +35,9 @@ export default function Image({ mediaItem, fill = null, ...rest }: Props) {
   return (
     <NextImage
       src={dockerSrc}
-      alt={mediaItem.altText}
-      width={mediaItem.mediaDetails.width}
-      height={mediaItem.mediaDetails.height}
+      alt={alt}
+      width={width}
+      height={height}
       {...rest}
     />
   );
