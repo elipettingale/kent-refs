@@ -34,7 +34,19 @@ html {
   }
 
   .wp-block-gallery {
-    @apply grid grid-cols-3 gap-6;
+    @apply grid gap-6;
+
+    &.columns-2 {
+      @apply grid-cols-2;
+    }
+
+    &.columns-3 {
+      @apply grid-cols-3;
+    }
+
+    &.columns-4 {
+      @apply grid-cols-4;
+    }
 
     .wp-block-image {
       @apply relative overflow-hidden cursor-pointer;

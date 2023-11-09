@@ -1,3 +1,4 @@
+import { Suspense, lazy } from "react";
 import { gql } from "@apollo/client";
 import { media, link } from "./fragments";
 
@@ -23,12 +24,29 @@ export function renderContent(content: string | null) {
     return;
   }
 
-  return parse(content);
+  return parse(content, {
+    replace: (domNode: any) => {
+      let component = domNode.attribs?.component;
+
+      if (!component) {
+        return;
+      }
+
+      let props = JSON.parse(domNode.children[0].data);
+      const Block = lazy(() => import(`@/components/blocks/${component}`));
+
+      return (
+        <Suspense fallback={null}>
+          <Block {...props}></Block>
+        </Suspense>
+      );
+    },
+  });
 }
 
-export function flatListToHierarchical(data = <any[]>[]) {
-  const tree = <any[]>[];
-  const childrenOf = <any>{};
+export function flatListToHierarchical(data: any[]) {
+  const tree: any[] = [];
+  const childrenOf: any = {};
 
   data.forEach((item: any) => {
     const newItem = { ...item };

@@ -1,0 +1,7 @@
+.Button {
+  @apply bg-blue py-3 px-4 text-white rounded no-underline;
+
+  &:hover {
+    @apply bg-blue-400;
+  }
+}
