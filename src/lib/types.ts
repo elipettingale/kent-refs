@@ -20,6 +20,15 @@ export interface MediaType {
   };
 }
 
+export interface ImageType {
+  id: number;
+  alt: string;
+  url: string;
+  title: string;
+  height: number;
+  width: number;
+}
+
 export interface PostType {
   id: string;
   title: string;

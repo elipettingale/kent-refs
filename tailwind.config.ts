@@ -46,7 +46,7 @@ const config: Config = {
       "grey-900": "#1f1f1f",
     },
   },
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [],
 };
 
 export default config;

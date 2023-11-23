@@ -11,26 +11,50 @@ html {
 }
 
 .container-lg {
-  @apply container;
+  width: calc(100% - 3rem);
+  max-width: 1500px;
 }
 
 .container-md {
+  width: calc(100% - 3rem);
   max-width: 1200px;
 }
 
 .container-sm {
+  width: calc(100% - 3rem);
   max-width: 900px;
 }
 
-.prose {
-  max-width: unset;
+.copy {
+  color: #374151;
+  line-height: 1.75;
+
+  > *:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    @apply text-2xl font-bold;
+  }
+
+  h3 {
+    @apply text-xl;
+  }
+
+  h4 {
+    @apply text-blue;
+  }
 
   .wp-block-columns {
-    @apply flex gap-2;
+    @apply flex gap-4;
   }
 
   .wp-block-column {
     flex: 1;
+
+    > *:not(:last-child) {
+      @apply mb-4;
+    }
   }
 
   .wp-block-gallery {

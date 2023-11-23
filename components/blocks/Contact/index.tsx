@@ -1,48 +1,43 @@
 import Image from "@/components/common/Image";
-import { MediaType } from "@/src/lib/types";
+import { ImageType, MediaType } from "@/src/lib/types";
 
 interface Props {
-  picture: {
-    alt: string;
-    url: string;
-  };
+  picture: string;
   name: string;
-  title: string;
-  email: string;
-  phone: string;
-  address: string;
+  jobs: {
+    title: string;
+    email: string;
+    phone: string;
+  }[];
 }
 
-export default function Contact({
-  picture,
-  name,
-  title,
-  email,
-  phone,
-  address,
-}: Props) {
-  console.log(picture);
+export default function Contact({ picture, name, jobs }: Props) {
+  console.log(jobs);
+
   return (
     <div className="flex bg-grey-100 rounded overflow-hidden">
-      <div className="relative aspect-square w-[60%]">
-        <Image className="m-0" src={picture.url} alt={picture.alt} fill />
+      <div className="relative aspect-[1/1] w-[40%]">
+        {picture && <Image className="m-0" src={picture} alt={name} fill />}
       </div>
-      <div className="p-4">
-        <div className="text-2xl">{name}</div>
-        <div className="text-xl font-roboto text-blue">{title}</div>
-        <div className="mt-4">
-          <ul className="list-none p-0">
-            <li>
-              <strong>Email:</strong> {email}
-            </li>
-            <li>
-              <strong>Phone:</strong> {phone}
-            </li>
-            <li>
-              <strong>Address:</strong> {address}
-            </li>
-          </ul>
-        </div>
+      <div className="p-4 w-[60%]">
+        <div className="text-2xl mb-3">{name}</div>
+        {jobs.map(({ title, email, phone }) => (
+          <div className="mb-2">
+            <div className="text-md font-roboto text-blue">{title}</div>
+            <div className="text-sm">
+              {email && (
+                <div>
+                  @ <a href={`mailto:${email}`}>{email}</a>
+                </div>
+              )}
+              {phone && (
+                <div>
+                  @ <a href={`tel:${email}`}>{phone}</a>
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

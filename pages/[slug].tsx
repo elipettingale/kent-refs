@@ -13,9 +13,7 @@ export default function Page({ page }: any) {
       <div className="bg-grey-100 py-12">
         <div className={`container-${fields.container} mx-auto`}>
           <article>
-            <Card className="prose mx-auto p-8">
-              {renderContent(page.content)}
-            </Card>
+            <Card className="copy p-8">{renderContent(page.content)}</Card>
           </article>
         </div>
       </div>
