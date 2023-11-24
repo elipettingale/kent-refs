@@ -98,6 +98,6 @@ export interface ThemeOptionsType {
 
 export interface LinkType {
   url: Url;
-  title: String;
+  title: string;
   target: "" | "_blank";
 }
