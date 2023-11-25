@@ -28,6 +28,10 @@ export default function FullBanner({
             <p className="text-6xl font-roboto uppercase text-white font-bold">
               {titleBottom}
             </p>
+            <img
+              className={styles.Cutout}
+              src="https://kent-refs-cms.elliotpettingale.co.uk/wp-content/uploads/2023/11/cutout.png"
+            />
           </div>
         </div>
       </div>

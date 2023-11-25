@@ -4,6 +4,7 @@
 }
 
 .Content {
+  position: relative;
   height: 100%;
   width: 90%;
   max-width: 900px;
@@ -11,4 +12,10 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.Cutout {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
