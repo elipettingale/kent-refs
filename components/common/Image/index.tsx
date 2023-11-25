@@ -18,12 +18,10 @@ export default function Image({
   fill = null,
   ...rest
 }: Props) {
-  let dockerSrc = src.toString().replace("localhost:8001", "wordpress");
-
   if (fill) {
     return (
       <NextImage
-        src={dockerSrc}
+        src={src}
         alt={alt}
         fill
         style={{ objectFit: "cover" }}
@@ -33,12 +31,6 @@ export default function Image({
   }
 
   return (
-    <NextImage
-      src={dockerSrc}
-      alt={alt}
-      width={width}
-      height={height}
-      {...rest}
-    />
+    <NextImage src={src} alt={alt} width={width} height={height} {...rest} />
   );
 }

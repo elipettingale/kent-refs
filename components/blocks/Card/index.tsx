@@ -9,6 +9,8 @@ interface Props {
 }
 
 export default function Card({ picture, title, link }: Props) {
+  console.log("link", link);
+
   return (
     <Link href={link.url} title={link.title} target={link.target}>
       <div className="rounded overflow-hidden">
