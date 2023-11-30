@@ -5,6 +5,7 @@ import FooterMenu from "../FooterMenu";
 import PhoneIcon from "@/components/common/PhoneIcon";
 import EmailIcon from "@/components/common/EmailIcon";
 import Image from "@/components/common/Image";
+import GravityForm from "@/components/blocks/GravityForm";
 
 const styles = require("./index.module.css");
 
@@ -47,7 +48,9 @@ export default function Footer({ menu }: Props) {
           </div>
           <div className={styles.Column}>
             <p className="text-3xl font-roboto">Get In Touch</p>
-            <div>...form</div>
+            <div className="w-full">
+              <GravityForm />
+            </div>
           </div>
         </div>
         <hr className="mt-12 mb-4 text-slate-300"></hr>
