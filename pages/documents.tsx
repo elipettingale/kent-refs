@@ -15,10 +15,6 @@ interface Props {
 export default function Page({ page, documents }: Props) {
   const [search, setSearch] = useState("");
 
-  if (!documents) {
-    return;
-  }
-
   const filteredDocments = documents.filter((document: any) => {
     return document.node.title.toLowerCase().includes(search.toLowerCase());
   });

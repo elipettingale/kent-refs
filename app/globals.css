@@ -45,6 +45,19 @@ html {
     @apply text-xl font-bold;
   }
 
+  ul {
+    list-style: unset;
+    padding-left: 40px;
+  }
+
+  .wp-block-separator {
+    margin: 2rem 0 !important;
+  }
+
+  .has-text-align-center {
+    @apply text-center;
+  }
+
   .wp-block-columns {
     @apply flex gap-4;
   }
@@ -57,10 +70,6 @@ html {
 
   .wp-block-column {
     flex: 1;
-
-    > * {
-      @apply block;
-    }
 
     > *:not(:last-child) {
       @apply mb-4;

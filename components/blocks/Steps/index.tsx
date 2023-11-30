@@ -22,12 +22,13 @@ export default function Steps({ steps, className, ...rest }: Props) {
             target={link?.target}
             className={styles.Step}
           >
-            <div>0{index + 1}</div>
-            <div>
-              <p className="text-slate-200 font-roboto font-bold text-xl mb-2">
+            <div className="px-4">
+              <p className="text-white font-roboto font-bold text-2xl mb-2">
                 {title}
               </p>
-              <p className="text-blue uppercase text-sm">{description}</p>
+              <p className="text-blue-400 uppercase text-md font-bold font-roboto">
+                {description}
+              </p>
             </div>
           </Link>
         ))}

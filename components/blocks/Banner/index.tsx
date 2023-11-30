@@ -24,7 +24,7 @@ export default function Banner({ backgroundImage, title }: Props) {
       >
         <div className={styles.Overlay}>
           <div className={styles.Content}>
-            <p className="text-3xl font-roboto uppercase text-white font-bold">
+            <p className="text-4xl font-roboto uppercase text-white font-bold">
               {title}
             </p>
           </div>

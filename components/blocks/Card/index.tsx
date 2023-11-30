@@ -11,7 +11,12 @@ interface Props {
 
 export default function Card({ picture, title, link }: Props) {
   return (
-    <Link href={link.url} title={link.title} target={link.target}>
+    <Link
+      href={link.url}
+      title={link.title}
+      target={link.target}
+      className="block"
+    >
       <div className={styles.Wrapper}>
         <div className={styles.Picture}>
           {picture && (

@@ -7,10 +7,6 @@
 .Step {
   @apply flex-1 flex p-6 relative overflow-hidden cursor-pointer;
 
-  > div:first-child {
-    @apply text-6xl text-slate-400 font-bold mr-4;
-  }
-
   &:not(:last-child) {
     @apply border-r-2 border-slate-400;
   }
