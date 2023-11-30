@@ -49,9 +49,13 @@ export default function Page({ page, latestNews, upcomingEvents }: Props) {
           backgroundImage: `url(${fields.social.backgroundImage.mediaItemUrl})`,
         }}
       >
-        <div className="container mx-auto py-12">
-          <p className="text-4xl text-white font-roboto mb-12">Recent Tweets</p>
-          <LatestTweets />
+        <div className="bg-[rgba(0,0,0,0.75)]">
+          <div className="container mx-auto py-12">
+            <p className="text-4xl text-white font-roboto mb-12">
+              Recent Tweets
+            </p>
+            <LatestTweets />
+          </div>
         </div>
       </div>
     </div>

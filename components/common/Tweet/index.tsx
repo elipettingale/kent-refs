@@ -16,7 +16,6 @@ export default function Tweet({ date, link, theme, children }: Props) {
         <div className={styles.Top}>{children}</div>
         <div className={styles.Bottom}>
           <p>{date}</p>
-          Logo
         </div>
       </div>
     </Link>

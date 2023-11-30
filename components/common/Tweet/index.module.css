@@ -1,5 +1,5 @@
 .Tweet {
-  @apply text-white rounded-md;
+  @apply text-white rounded-md h-full flex flex-col justify-between;
 
   &--grey {
     @apply bg-grey bg-opacity-50;
@@ -11,17 +11,17 @@
 
   &--blue {
     @apply bg-[#57b5ff];
-
-    .Top {
-      @apply border-grey-200;
-    }
   }
 }
 
 .Top {
-  @apply italic border-b p-4;
+  @apply italic p-4;
+
+  p:not(:last-child) {
+    @apply mb-2;
+  }
 }
 
 .Bottom {
-  @apply p-4;
+  @apply p-4 border-t;
 }
