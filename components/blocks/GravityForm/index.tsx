@@ -1,13 +1,13 @@
 import Button from "@/components/common/Button";
-import styles from "./index.module.css";
+import Input from "@/components/common/Input";
 
 interface Props {}
 
 export default function GravityForm({}: Props) {
   return (
-    <form className={styles.Form}>
-      <input type="text" placeholder="Your Name" />
-      <input type="text" placeholder="Your Email Address" />
+    <form className="w-full">
+      <Input type="text" placeholder="Your Name" />
+      <Input type="text" placeholder="Your Email Address" />
       <div className="text-right">
         <Button>Submit</Button>
       </div>

@@ -127,14 +127,14 @@ export const getPageBySlug = async (slug: string, acfFields: string = "") => {
   return data(response).page;
 };
 
-export const getAllPosts = async (postType: string) => {
+export const getAllPosts = async (postType: string, fields = "slug") => {
   let response = await client.query({
     query: gql`
       {
         ${postType}(first: 10000) {
           edges {
             node {
-              slug
+              ${fields}
             }
           }
         }
