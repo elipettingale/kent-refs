@@ -2,15 +2,19 @@
   @apply text-white rounded-md h-full flex flex-col justify-between;
 
   &--grey {
-    @apply bg-grey bg-opacity-50;
+    @apply bg-grey bg-opacity-25;
 
-    .Top {
-      @apply border-grey-400;
+    .Bottom svg {
+      @apply fill-grey opacity-50;
     }
   }
 
   &--blue {
     @apply bg-[#57b5ff];
+
+    .Bottom svg {
+      @apply fill-blue opacity-25;
+    }
   }
 }
 
@@ -23,5 +27,5 @@
 }
 
 .Bottom {
-  @apply p-4 border-t;
+  @apply px-4 py-2 border-t flex justify-between items-center;
 }
