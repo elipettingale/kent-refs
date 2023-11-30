@@ -1,0 +1,28 @@
+.Wrapper {
+  @apply rounded overflow-hidden;
+
+  &:hover {
+    .Picture {
+      > * {
+        scale: 1.1;
+      }
+    }
+
+    .Title {
+      @apply bg-slate-500;
+    }
+  }
+}
+
+.Picture {
+  @apply relative aspect-[5/3] overflow-hidden;
+
+  > * {
+    transition: all 200ms ease-in-out;
+  }
+}
+
+.Title {
+  @apply bg-slate-400 text-white py-2 px-4 text-xl text-center;
+  transition: all 200ms ease-in-out;
+}

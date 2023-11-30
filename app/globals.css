@@ -52,6 +52,10 @@ html {
   .wp-block-column {
     flex: 1;
 
+    > * {
+      @apply block;
+    }
+
     > *:not(:last-child) {
       @apply mb-4;
     }
