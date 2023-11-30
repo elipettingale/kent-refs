@@ -3,6 +3,7 @@ import Gallery from "@/components/blocks/Gallery";
 import LatestNewsAndEvents from "@/components/blocks/LatestNewsAndEvents";
 import LatestTweets from "@/components/blocks/LatestTweets";
 import Steps from "@/components/blocks/Steps";
+import LinesIcon from "@/components/common/LinesIcon";
 import {
   getGlobal,
   getPageBySlug,
@@ -52,7 +53,7 @@ export default function Page({ page, latestNews, upcomingEvents }: Props) {
         <div className="bg-[rgba(0,0,0,0.75)]">
           <div className="container mx-auto py-12">
             <p className="text-4xl text-white font-roboto mb-12">
-              Recent Tweets
+              <LinesIcon /> Recent Tweets
             </p>
             <LatestTweets />
           </div>

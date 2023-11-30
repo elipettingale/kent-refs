@@ -1,6 +1,7 @@
 import CalendarIcon from "@/components/common/CalendarIcon";
 import Card from "@/components/common/Card";
 import Image from "@/components/common/Image";
+import LinesIcon from "@/components/common/LinesIcon";
 import LinkButton from "@/components/common/LinkButton";
 import { date, renderContent } from "@/src/lib/helpers";
 import { PaginatedPostsType } from "@/src/lib/types";
@@ -15,7 +16,9 @@ export default function LatestNewsAndEvents({ posts, events }: Props) {
   return (
     <div className="flex py-4">
       <div className="w-[65%] flex flex-col gap-8 mr-8">
-        <p className="text-4xl font-roboto">Latest News</p>
+        <p className="text-4xl font-roboto">
+          <LinesIcon /> Latest News
+        </p>
         {posts.edges.map(({ node: post }: any) => (
           <Card key={post.id} className="flex">
             <div className="w-[45%] relative aspect-square">
@@ -29,7 +32,6 @@ export default function LatestNewsAndEvents({ posts, events }: Props) {
               <div className="flex flex-col gap-2 mb-6">
                 <p className="text-3xl font-roboto">{post.title}</p>
                 <p className="text-lg text-grey flex items-center">
-                  <CalendarIcon color="blue" />
                   {date(post.date)}
                 </p>
                 <div className="text-lg">{renderContent(post.excerpt)}</div>
@@ -43,7 +45,9 @@ export default function LatestNewsAndEvents({ posts, events }: Props) {
         ))}
       </div>
       <div className="w-[35%] flex flex-col gap-8">
-        <p className="text-4xl font-roboto">Upcoming Events</p>
+        <p className="text-4xl font-roboto">
+          <LinesIcon /> Upcoming Events
+        </p>
         {events.edges.map(({ node: event }: any, index) => (
           <Link href={event.link}>
             <Card key={event.id} className="flex flex-col">
