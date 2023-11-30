@@ -13,6 +13,7 @@ export interface MediaType {
   id: string;
   altText: string;
   mediaItemUrl: string;
+  sourceUrl: string;
   title: string;
   mediaDetails: {
     height: number;
@@ -93,6 +94,7 @@ export interface ThemeOptionsType {
   };
   footer: {
     text: string;
+    gallery: MediaType[];
   };
 }
 
