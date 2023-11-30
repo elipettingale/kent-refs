@@ -34,19 +34,25 @@ html {
   }
 
   h2 {
-    @apply text-2xl font-bold;
+    @apply text-3xl font-bold;
   }
 
   h3 {
-    @apply text-xl;
+    @apply text-2xl font-bold;
   }
 
   h4 {
-    @apply text-blue;
+    @apply text-xl font-bold;
   }
 
   .wp-block-columns {
     @apply flex gap-4;
+  }
+
+  .wp-block-heading {
+    &.has-blue-color {
+      @apply text-blue;
+    }
   }
 
   .wp-block-column {
