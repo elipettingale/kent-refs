@@ -17,8 +17,6 @@ interface Props {
 export default function Footer({ menu }: Props) {
   const [{ contact, footer }] = useThemeOptions();
 
-  console.log("footer", footer);
-
   return (
     <footer className={styles.Footer}>
       <div className="container mx-auto">

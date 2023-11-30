@@ -52,8 +52,6 @@ export function flatListToHierarchical(data: any[]) {
     const newItem = { ...item };
     const { ["id"]: id, ["parentId"]: parentId = 0 } = newItem;
 
-    console.log(id, parentId);
-
     childrenOf[id] = childrenOf[id] || [];
     newItem["children"] = childrenOf[id];
     parentId

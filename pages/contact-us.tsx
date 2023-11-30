@@ -15,8 +15,6 @@ interface ContactUsPageType extends PageType {
 export default function Page({ page }: Props) {
   const { foo } = page.contactUsFields;
 
-  console.log(foo);
-
   return (
     <div>
       <h1>{page.title}</h1>

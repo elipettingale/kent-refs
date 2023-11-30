@@ -49,8 +49,8 @@ export default function LatestNewsAndEvents({ posts, events }: Props) {
           <LinesIcon /> Upcoming Events
         </p>
         {events.edges.map(({ node: event }: any, index) => (
-          <Link href={event.link}>
-            <Card key={event.id} className="flex flex-col">
+          <Link key={event.id} href={event.link}>
+            <Card className="flex flex-col">
               {index === 0 && (
                 <div className="relative aspect-[5/3]">
                   <Image
