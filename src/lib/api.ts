@@ -63,7 +63,7 @@ export const getMenu = async (id: string) => {
       query GetMenu {
         menu(id: "${id}", idType: SLUG) {
           id
-          menuItems {
+          menuItems(first: 1000) {
             nodes {
               id
               order

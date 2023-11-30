@@ -12,6 +12,7 @@
 
 .Menu {
   @apply flex items-center;
+  z-index: 2;
 
   > ul {
     @apply h-full flex;
