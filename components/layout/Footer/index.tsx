@@ -29,12 +29,11 @@ export default function Footer({ menu }: Props) {
             </a>
           </div>
           <div className={styles.Column}>
-            <p className="text-3xl font-roboto">Latest News</p>
-            <div>...</div>
+            <div>...pics</div>
           </div>
           <div className={styles.Column}>
-            <p className="text-3xl font-roboto">Lorem Ipsum</p>
-            <div>...</div>
+            <p className="text-3xl font-roboto">Get In Touch</p>
+            <div>...form</div>
           </div>
         </div>
         <hr className="mt-12 mb-4 text-slate-300"></hr>

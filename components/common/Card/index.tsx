@@ -5,7 +5,9 @@ interface Props {
 
 export default function Card({ className, children }: Props) {
   return (
-    <div className={`bg-white rounded drop-shadow-md ${className}`}>
+    <div
+      className={`bg-white rounded drop-shadow-md overflow-hidden ${className}`}
+    >
       {children}
     </div>
   );
