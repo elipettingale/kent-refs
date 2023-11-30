@@ -1,3 +1,4 @@
+import CalendarIcon from "@/components/common/CalendarIcon";
 import Card from "@/components/common/Card";
 import Image from "@/components/common/Image";
 import LinkButton from "@/components/common/LinkButton";
@@ -27,7 +28,10 @@ export default function LatestNewsAndEvents({ posts, events }: Props) {
             <div className="w-[55%] p-8">
               <div className="flex flex-col gap-2 mb-6">
                 <p className="text-3xl font-roboto">{post.title}</p>
-                <p className="text-lg text-grey">{date(post.date)}</p>
+                <p className="text-lg text-grey flex items-center">
+                  <CalendarIcon color="blue" />
+                  {date(post.date)}
+                </p>
                 <div className="text-lg">{renderContent(post.excerpt)}</div>
               </div>
 
