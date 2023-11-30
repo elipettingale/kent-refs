@@ -2,6 +2,16 @@
   @apply bg-slate-500 py-12 text-grey-200;
 }
 
+.Contact {
+  a {
+    @apply block;
+
+    &:hover {
+      @apply text-blue;
+    }
+  }
+}
+
 .Column {
   @apply w-[33.33%] flex flex-col items-start gap-4;
 }

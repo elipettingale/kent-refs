@@ -47,6 +47,9 @@ export const getThemeOptions = async () => {
             }
             footer {
               text
+              gallery {
+                ...media
+              }
             }
           }
         }

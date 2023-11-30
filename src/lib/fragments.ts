@@ -5,6 +5,7 @@ export const media = gql`
     id
     altText
     mediaItemUrl
+    sourceUrl(size: MEDIUM)
     title
     mediaDetails {
       height
