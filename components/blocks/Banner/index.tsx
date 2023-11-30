@@ -10,8 +10,6 @@ interface Props {
 export default function Banner({ backgroundImage, title }: Props) {
   const [themeOptions] = useThemeOptions();
 
-  console.log(themeOptions);
-
   let backgroundSrc =
     backgroundImage?.mediaItemUrl ??
     themeOptions.defaults.bannerImage.mediaItemUrl;

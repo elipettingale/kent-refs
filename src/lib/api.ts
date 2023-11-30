@@ -168,6 +168,7 @@ export const getPosts = async (
                   slug
                   link
                   excerpt
+                  date
                   featuredImage {
                     node {
                       ...media
@@ -213,4 +214,40 @@ export const getPostBySlug = async (
   });
 
   return data(response)[postType];
+};
+
+export const getUpcomingEvents = async () => {
+  let response = await client.query({
+    query: gql`
+      ${media}
+      query GetUpcomingEvents {
+        events(first: 3) {
+          pageInfo {
+            hasNextPage
+            endCursor
+          }
+          edges {
+            node {
+              id
+              title
+              slug
+              link
+              featuredImage {
+                node {
+                  ...media
+                }
+              }
+              eventFields {
+                date
+                time
+                venue
+              }
+            }
+          }
+        }
+      }
+    `,
+  });
+
+  return data(response).events;
 };

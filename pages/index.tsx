@@ -1,15 +1,21 @@
 import FullBanner from "@/components/blocks/FullBanner";
 import Gallery from "@/components/blocks/Gallery";
-import LatestNews from "@/components/blocks/LatestNews";
+import LatestNewsAndEvents from "@/components/blocks/LatestNewsAndEvents";
 import LatestTweets from "@/components/blocks/LatestTweets";
 import Steps from "@/components/blocks/Steps";
-import { getGlobal, getPageBySlug, getPosts } from "@/src/lib/api";
+import {
+  getGlobal,
+  getPageBySlug,
+  getPosts,
+  getUpcomingEvents,
+} from "@/src/lib/api";
 import { MediaType, PageType, PaginatedPostsType } from "@/src/lib/types";
 import { GetStaticProps } from "next";
 
 interface Props {
   page: HomePageType;
   latestNews: PaginatedPostsType;
+  upcomingEvents: PaginatedPostsType;
 }
 
 interface HomePageType extends PageType {
@@ -23,7 +29,7 @@ interface HomePageType extends PageType {
   };
 }
 
-export default function Page({ page, latestNews }: Props) {
+export default function Page({ page, latestNews, upcomingEvents }: Props) {
   let fields = page.homeFields;
 
   return (
@@ -35,10 +41,7 @@ export default function Page({ page, latestNews }: Props) {
       </div>
       <div className="bg-grey-100 py-12">
         <div className="container mx-auto">
-          <p className="text-4xl font-roboto">Latest News</p>
-          <div className="py-6">
-            <LatestNews posts={latestNews} />
-          </div>
+          <LatestNewsAndEvents posts={latestNews} events={upcomingEvents} />
         </div>
       </div>
       <div
@@ -57,7 +60,8 @@ export default function Page({ page, latestNews }: Props) {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const global = await getGlobal();
-  const latestNews = await getPosts("posts", { first: 4 });
+  const latestNews = await getPosts("posts", { first: 2 });
+  const upcomingEvents = await getUpcomingEvents();
   const page = await getPageBySlug(
     "/home",
     `homeFields {
@@ -92,6 +96,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       page: page,
       seo: page?.seo,
       latestNews: latestNews,
+      upcomingEvents: upcomingEvents,
     },
     revalidate: 10,
   };

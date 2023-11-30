@@ -12,7 +12,6 @@ interface Props {
 }
 
 export default function Steps({ steps, className, ...rest }: Props) {
-  console.log("steps", steps);
   return (
     <div className={`${styles.Wrapper} ${className}`} {...rest}>
       <div className="bg-slate-600 rounded flex">

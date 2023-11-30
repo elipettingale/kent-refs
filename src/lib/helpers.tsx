@@ -76,3 +76,11 @@ export function importFragments(query: string) {
     ${fragments.includes("...link") ? link : ""}
   `;
 }
+
+export function date(date: any) {
+  return new Date(date).toLocaleDateString("en-us", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
