@@ -47,7 +47,7 @@ export default function Page({ page, latestNews, upcomingEvents }: Props) {
       </div>
       <div
         style={{
-          backgroundImage: `url(${fields.social.backgroundImage.mediaItemUrl})`,
+          backgroundImage: `url(${fields.social.backgroundImage.sourceUrl})`,
         }}
       >
         <div className="bg-[rgba(0,0,0,0.75)]">

@@ -12,7 +12,6 @@ export interface PageType {
 export interface MediaType {
   id: string;
   altText: string;
-  mediaItemUrl: string;
   sourceUrl: string;
   title: string;
   mediaDetails: {

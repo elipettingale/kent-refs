@@ -17,7 +17,7 @@ export default function FullBanner({
       <div
         className="h-full bg-cover"
         style={{
-          backgroundImage: `url(${backgroundImage.mediaItemUrl})`,
+          backgroundImage: `url(${backgroundImage.sourceUrl})`,
         }}
       >
         <div className={styles.Overlay}>

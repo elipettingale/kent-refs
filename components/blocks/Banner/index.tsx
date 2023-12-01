@@ -11,8 +11,7 @@ export default function Banner({ backgroundImage, title }: Props) {
   const [themeOptions] = useThemeOptions();
 
   let backgroundSrc =
-    backgroundImage?.mediaItemUrl ??
-    themeOptions.defaults.bannerImage.mediaItemUrl;
+    backgroundImage?.sourceUrl ?? themeOptions.defaults.bannerImage.sourceUrl;
 
   return (
     <div className="h-[250px]">

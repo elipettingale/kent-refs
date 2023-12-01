@@ -1,6 +1,6 @@
 import { Suspense, lazy } from "react";
 import { gql } from "@apollo/client";
-import { media, link } from "./fragments";
+import { media, thumbnail, link } from "./fragments";
 
 const parse = require("html-react-parser");
 
@@ -71,6 +71,7 @@ export function importFragments(query: string) {
 
   return gql`
     ${fragments.includes("...media") ? media : ""}
+    ${fragments.includes("...thumbnail") ? thumbnail : ""}
     ${fragments.includes("...link") ? link : ""}
   `;
 }

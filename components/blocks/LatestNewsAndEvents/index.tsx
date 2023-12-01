@@ -30,7 +30,7 @@ export default function LatestNewsAndEvents({ posts, events }: Props) {
             <Card className="flex">
               <div className="w-[45%] relative aspect-square">
                 <Image
-                  src={post.featuredImage.node.mediaItemUrl}
+                  src={post.featuredImage.node.sourceUrl}
                   alt={post.featuredImage.node.altText}
                   fill
                 />
@@ -70,7 +70,7 @@ export default function LatestNewsAndEvents({ posts, events }: Props) {
               {index === 0 && (
                 <div className="relative aspect-[5/3]">
                   <Image
-                    src={event.featuredImage.node.mediaItemUrl}
+                    src={event.featuredImage.node.sourceUrl}
                     alt={event.featuredImage.node.altText}
                     fill
                   />

@@ -1,12 +1,12 @@
 import Image from "next/image";
 
 export default function FeaturedImage({
-  mediaItem: { mediaItemUrl, altText, mediaDetails },
+  mediaItem: { sourceUrl, altText, mediaDetails },
 }: any) {
   return (
     <div className="relative">
       <Image
-        src={mediaItemUrl}
+        src={sourceUrl}
         alt={altText}
         width={mediaDetails.width}
         height={mediaDetails.height}

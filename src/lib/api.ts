@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
 import client from "./client";
-import { media } from "./fragments";
+import { media, thumbnail } from "./fragments";
 import { importFragments } from "./helpers";
 
 function data(response: any) {
@@ -29,6 +29,7 @@ export const getThemeOptions = async () => {
   let response = await client.query({
     query: gql`
       ${media}
+      ${thumbnail}
       query GetThemeOptions {
         themeOptions {
           themeOptionsFields {
@@ -48,7 +49,7 @@ export const getThemeOptions = async () => {
             footer {
               text
               gallery {
-                ...media
+                ...thumbnail
               }
             }
           }

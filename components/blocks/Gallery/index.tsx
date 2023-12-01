@@ -12,7 +12,7 @@ export default function Gallery({ images }: Props) {
       {images.map((image) => (
         <div key={image.id} className={styles.Item}>
           <Image
-            src={image.mediaItemUrl}
+            src={image.sourceUrl}
             alt={image.altText}
             width={image.mediaDetails.width}
             height={image.mediaDetails.height}
