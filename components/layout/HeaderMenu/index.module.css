@@ -40,7 +40,7 @@
     }
 
     > ul {
-      @apply bg-white rounded min-w-[150px] absolute hidden;
+      @apply bg-white rounded min-w-[150px] absolute hidden shadow-md;
     }
 
     &:hover {
@@ -52,10 +52,10 @@
 
   &__SubItem {
     > a {
-      @apply block px-4 py-2;
+      @apply block px-6 py-3;
 
       &:hover {
-        @apply text-blue;
+        @apply text-blue bg-grey-100 rounded;
       }
     }
 
