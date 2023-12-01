@@ -195,17 +195,11 @@ export const getPostBySlug = async (
 ) => {
   let response = await client.query({
     query: gql`
-      ${media}
       query GetPostData($slug: ID = "${slug}") {
         ${postType}(id: $slug, idType: URI) {
           id
           title
           link
-          featuredImage {
-            node {
-              ...media
-            }
-          }
           content
 		      ${acfFields}
           seo {

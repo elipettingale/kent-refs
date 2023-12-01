@@ -4,18 +4,15 @@ import { renderContent } from "@/src/lib/helpers";
 import Banner from "@/components/blocks/Banner";
 import Card from "@/components/common/Card";
 
-export default function Page({ event }: any) {
-  const { date } = event.eventFields;
-
+export default function Page({ lawClarification }: any) {
   return (
     <div>
-      <Banner title={event.title} />
+      <Banner title={lawClarification.title} />
       <div className="bg-grey-100 py-12">
         <div className="container-md mx-auto">
           <article>
             <Card className="copy p-8">
-              <p>{date}</p>
-              {renderContent(event.content)}
+              {renderContent(lawClarification.content)}
             </Card>
           </article>
         </div>
@@ -26,34 +23,30 @@ export default function Page({ event }: any) {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const global = await getGlobal();
-  const event = await getPostBySlug(
-    "event",
-    params?.slug as string,
-    `
-    eventFields {
-        date
-    }
-  `
+  const lawClarification = await getPostBySlug(
+    "lawClarification",
+    params?.slug as string
   );
 
   return {
-    notFound: event === null,
+    notFound: lawClarification === null,
     props: {
       global: global,
-      event: event,
-      seo: event?.seo,
+      lawClarification: lawClarification,
+      seo: lawClarification?.seo,
     },
     revalidate: 10,
   };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = await getAllPosts("events");
+  const posts = await getAllPosts("lawClarifications");
 
   return {
     paths:
       posts.map(
-        ({ node }: { node: { slug: string } }) => `/events/${node.slug}`
+        ({ node }: { node: { slug: string } }) =>
+          `/law-clarifications/${node.slug}`
       ) || [],
     fallback: "blocking",
   };
