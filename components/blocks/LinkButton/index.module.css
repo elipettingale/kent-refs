@@ -1,5 +1,5 @@
 .Button {
-  @apply bg-blue py-2 px-5 text-white rounded no-underline;
+  @apply inline-block bg-blue py-2 px-5 text-white rounded no-underline;
 
   &:hover {
     @apply bg-blue-400;

@@ -1,0 +1,23 @@
+.Card {
+  transition: all 200ms ease-in-out;
+
+  > * {
+    transition: all 200ms ease-in-out;
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+
+    > * {
+      @apply drop-shadow-lg;
+    }
+  }
+}
+
+.Event {
+  @apply flex flex-col;
+
+  &--isNotFirst {
+    @apply border-l-[7px] border-slate-200;
+  }
+}

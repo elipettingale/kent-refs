@@ -45,27 +45,41 @@ html {
     @apply text-xl font-bold;
   }
 
-  ul {
+  p {
+    a {
+      @apply text-blue;
+    }
+  }
+
+  ul,
+  ol {
     list-style: unset;
     padding-left: 40px;
   }
 
   .wp-block-separator {
-    margin: 2rem 0 !important;
+    margin: 2.5rem 0 !important;
+    @apply text-grey-200;
   }
 
   .has-text-align-center {
     @apply text-center;
   }
 
-  .wp-block-columns {
-    @apply flex gap-4;
+  .has-text-align-right {
+    @apply text-right;
   }
 
-  .wp-block-heading {
-    &.has-blue-color {
-      @apply text-blue;
-    }
+  .has-text-align-left {
+    @apply text-left;
+  }
+
+  .wp-block-columns {
+    @apply flex gap-6;
+  }
+
+  .has-blue-color {
+    @apply text-blue;
   }
 
   .wp-block-column {
