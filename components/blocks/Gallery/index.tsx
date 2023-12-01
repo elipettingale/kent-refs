@@ -8,7 +8,7 @@ interface Props {
 
 export default function Gallery({ images }: Props) {
   return (
-    <div className="grid grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
       {images.map((image) => (
         <div key={image.id} className={styles.Item}>
           <Image
