@@ -4,16 +4,14 @@ import { renderContent } from "@/src/lib/helpers";
 import Banner from "@/components/blocks/Banner";
 import Card from "@/components/common/Card";
 
-export default function Page({ lawClarification }: any) {
+export default function Page({ law }: any) {
   return (
     <div>
-      <Banner title={lawClarification.title} />
+      <Banner title={law.title} />
       <div className="bg-grey-100 py-12">
         <div className="container-md mx-auto">
           <article>
-            <Card className="copy p-8">
-              {renderContent(lawClarification.content)}
-            </Card>
+            <Card className="copy p-8">{renderContent(law.content)}</Card>
           </article>
         </div>
       </div>
@@ -23,30 +21,26 @@ export default function Page({ lawClarification }: any) {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const global = await getGlobal();
-  const lawClarification = await getPostBySlug(
-    "lawClarification",
-    params?.slug as string
-  );
+  const law = await getPostBySlug("law", params?.slug as string);
 
   return {
-    notFound: lawClarification === null,
+    notFound: law === null,
     props: {
       global: global,
-      lawClarification: lawClarification,
-      seo: lawClarification?.seo,
+      law: law,
+      seo: law?.seo,
     },
     revalidate: 10,
   };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = await getAllPosts("lawClarifications");
+  const posts = await getAllPosts("laws");
 
   return {
     paths:
       posts.map(
-        ({ node }: { node: { slug: string } }) =>
-          `/law-clarifications/${node.slug}`
+        ({ node }: { node: { slug: string } }) => `/laws/${node.slug}`
       ) || [],
     fallback: "blocking",
   };

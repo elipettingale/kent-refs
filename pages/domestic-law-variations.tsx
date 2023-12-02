@@ -59,11 +59,11 @@ export default function Page({ page, laws }: Props) {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const global = await getGlobal();
-  const page = await getPageBySlug("/law-clarifications");
+  const page = await getPageBySlug("/domesitc-law-variations");
   const laws = await getAllPostsForTaxonomy(
     "laws",
     "lawTypeSlug",
-    "law-clarifications",
+    "domestic-law-variations",
     `
       id
       title

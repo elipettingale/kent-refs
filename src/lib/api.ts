@@ -146,6 +146,29 @@ export const getAllPosts = async (postType: string, fields = "slug") => {
   return response.data[postType].edges;
 };
 
+export const getAllPostsForTaxonomy = async (
+  postType: string,
+  taxName: string,
+  taxValue: string,
+  fields = "slug"
+) => {
+  let response = await client.query({
+    query: gql`
+      {
+        ${postType}(first: 10000, where: {${taxName}: ["${taxValue}"]}) {
+          edges {
+            node {
+              ${fields}
+            }
+          }
+        }
+      }
+    `,
+  });
+
+  return response.data[postType].edges;
+};
+
 export const getPosts = async (
   postType: string,
   options: { first?: Number; after?: String } = {}
