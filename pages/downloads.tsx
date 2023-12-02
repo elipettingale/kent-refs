@@ -13,6 +13,23 @@ interface Props {
   downloads: any;
 }
 
+function renderSection(title: string, downloads: any[]) {
+  if (downloads.length === 0) {
+    return;
+  }
+
+  return (
+    <div className="mt-6">
+      <p className="text-2xl mb-2 font-roboto">{title}</p>
+      <div className="flex flex-wrap gap-2">
+        {downloads.map(({ node: download }: any) => (
+          <Download key={download.id} {...download} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function Page({ page, downloads }: Props) {
   const [search, setSearch] = useState("");
 
@@ -20,13 +37,21 @@ export default function Page({ page, downloads }: Props) {
     return download.node.title.toLowerCase().includes(search.toLowerCase());
   });
 
+  const downloadsForSection = (section: string) => {
+    return filteredDownloads.filter((download: any) => {
+      return download.node.downloadFields.section === section;
+    });
+  };
+
   return (
     <div>
       <Banner title={page.title} />
       <div className="bg-grey-100 py-12">
         <div className="container-md mx-auto">
           <Card className="p-8">
-            <div className="copy mb-8">{renderContent(page.content)}</div>
+            {page.content && (
+              <div className="copy mb-8">{renderContent(page.content)}</div>
+            )}
             <div>
               <Input
                 type="text"
@@ -34,11 +59,18 @@ export default function Page({ page, downloads }: Props) {
                 value={search}
                 onChange={(event: any) => setSearch(event.target.value)}
               />
-              <div className="flex flex-wrap gap-2">
-                {filteredDownloads.map(({ node: download }: any) => (
-                  <Download key={download.id} {...download} />
-                ))}
-              </div>
+              {renderSection("Referees", downloadsForSection("referees"))}
+              {renderSection("Advisors", downloadsForSection("advisors"))}
+              {renderSection(
+                "Rules & Regs",
+                downloadsForSection("rules-and-regs")
+              )}
+              {renderSection("Clubs", downloadsForSection("clubs"))}
+              {renderSection("Schools", downloadsForSection("schools"))}
+              {renderSection(
+                "AGM Policies",
+                downloadsForSection("agm-policies")
+              )}
             </div>
           </Card>
         </div>
@@ -57,6 +89,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       title
       downloadFields {
         description
+        section
         document {
           mediaItemUrl
           mimeType
