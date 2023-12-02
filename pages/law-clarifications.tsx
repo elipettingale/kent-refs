@@ -38,12 +38,12 @@ export default function Page({ page, laws }: Props) {
                 value={search}
                 onChange={(event: any) => setSearch(event.target.value)}
               />
-              <div className="flex gap-2">
+              <div className="flex flex-wrap gap-2">
                 {filteredLaws.map(({ node: law }: any) => (
                   <Link
                     key={law.id}
                     href={law.link}
-                    className="bg-blue text-white px-6 py-3 rounded"
+                    className="bg-blue text-white px-6 py-3 rounded whitespace-nowrap"
                   >
                     {law.title}
                   </Link>

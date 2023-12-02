@@ -94,6 +94,12 @@ html {
     }
   }
 
+  .wp-block-image {
+    figure.aligncenter {
+      @apply text-center;
+    }
+  }
+
   .wp-block-gallery {
     @apply grid gap-6;
 

@@ -1,5 +1,6 @@
 import Banner from "@/components/blocks/Banner";
 import Card from "@/components/common/Card";
+import Download from "@/components/common/Download";
 import Input from "@/components/common/Input";
 import { getAllPosts, getGlobal, getPageBySlug } from "@/src/lib/api";
 import { renderContent } from "@/src/lib/helpers";
@@ -9,14 +10,14 @@ import { useState } from "react";
 
 interface Props {
   page: PageType;
-  documents: any;
+  downloads: any;
 }
 
-export default function Page({ page, documents }: Props) {
+export default function Page({ page, downloads }: Props) {
   const [search, setSearch] = useState("");
 
-  const filteredDocments = documents.filter((document: any) => {
-    return document.node.title.toLowerCase().includes(search.toLowerCase());
+  const filteredDownloads = downloads.filter((download: any) => {
+    return download.node.title.toLowerCase().includes(search.toLowerCase());
   });
 
   return (
@@ -33,9 +34,9 @@ export default function Page({ page, documents }: Props) {
                 value={search}
                 onChange={(event: any) => setSearch(event.target.value)}
               />
-              <div>
-                {filteredDocments.map(({ node: document }: any) => (
-                  <div key={document.id}>{document.title}</div>
+              <div className="flex flex-wrap gap-2">
+                {filteredDownloads.map(({ node: download }: any) => (
+                  <Download key={download.id} {...download} />
                 ))}
               </div>
             </div>
@@ -48,15 +49,17 @@ export default function Page({ page, documents }: Props) {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const global = await getGlobal();
-  const page = await getPageBySlug("/documents");
-  const documents = await getAllPosts(
-    "documents",
+  const page = await getPageBySlug("/downloads");
+  const downloads = await getAllPosts(
+    "downloads",
     `
       id
       title
-      documentFields {
+      downloadFields {
+        description
         document {
           mediaItemUrl
+          mimeType
         }
       }
     `
@@ -67,7 +70,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       global: global,
       page: page,
       seo: page?.seo,
-      documents: documents,
+      downloads: downloads,
     },
     revalidate: 10,
   };

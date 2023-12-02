@@ -1,0 +1,7 @@
+.Download {
+  @apply bg-slate-500 p-4 rounded flex;
+
+  &:hover {
+    @apply opacity-95;
+  }
+}
