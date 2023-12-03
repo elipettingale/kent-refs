@@ -86,30 +86,32 @@ export default function Page({ page, events }: Props) {
                       <p className="text-grey mb-4">
                         {event.eventFields.date} @ {event.eventFields.time}
                       </p>
-                      <div className="flex items-center italic text-blue font-bold text-sm">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width={20}
-                          height={20}
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          className="mr-1 stroke-blue"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M12 21c3.5-3.6 7-6.824 7-10.8C19 6.224 15.866 3 12 3s-7 3.224-7 7.2 3.5 7.2 7 10.8Z"
-                          />
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
-                          />
-                        </svg>
-                        {event.eventFields.venue}
-                      </div>
+                      {event.eventFields.venue && (
+                        <div className="flex items-center italic text-blue font-bold text-sm">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width={20}
+                            height={20}
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            className="mr-1 stroke-blue"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M12 21c3.5-3.6 7-6.824 7-10.8C19 6.224 15.866 3 12 3s-7 3.224-7 7.2 3.5 7.2 7 10.8Z"
+                            />
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
+                            />
+                          </svg>
+                          {event.eventFields.venue}
+                        </div>
+                      )}
                     </div>
                   </Card>
                 </Link>
