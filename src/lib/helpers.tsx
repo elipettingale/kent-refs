@@ -1,6 +1,7 @@
 import { Suspense, lazy } from "react";
 import { gql } from "@apollo/client";
 import { media, thumbnail, link } from "./fragments";
+import Card from "@/components/common/Card";
 
 const parse = require("html-react-parser");
 
@@ -17,6 +18,26 @@ export function BEM(styles: any, root: string, modifiers: object) {
 
 export function clone(data: any) {
   return JSON.parse(JSON.stringify(data));
+}
+
+export function renderMultiContent(content: string | null) {
+  if (content === null) {
+    return;
+  }
+
+  let sections = content.split("core/nextpage");
+
+  return (
+    <>
+      {sections.map((section, index) => {
+        if (index === 0) {
+          return <Card className="copy p-8">{parse(section)}</Card>;
+        }
+
+        return <Card className="copy p-8 mt-8">{parse(section)}</Card>;
+      })}
+    </>
+  );
 }
 
 export function renderContent(content: string | null) {

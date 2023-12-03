@@ -1,6 +1,6 @@
 import { getAllPages, getGlobal, getPageBySlug } from "@/src/lib/api";
 import { GetStaticPaths, GetStaticProps } from "next";
-import { renderContent } from "@/src/lib/helpers";
+import { renderContent, renderMultiContent } from "@/src/lib/helpers";
 import Banner from "@/components/blocks/Banner";
 import Card from "@/components/common/Card";
 
@@ -12,9 +12,7 @@ export default function Page({ page }: any) {
       <Banner title={page.title} />
       <div className="bg-grey-100 py-12">
         <div className={`container-${fields.container} mx-auto`}>
-          <article>
-            <Card className="copy p-8">{renderContent(page.content)}</Card>
-          </article>
+          <article>{renderMultiContent(page.content)}</article>
         </div>
       </div>
     </div>
