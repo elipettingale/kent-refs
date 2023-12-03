@@ -12,9 +12,9 @@ interface Props {
 export default function Card({ picture, title, link }: Props) {
   return (
     <Link
-      href={link.url}
-      title={link.title}
-      target={link.target}
+      href={link.url ?? "#"}
+      title={link.title ?? null}
+      target={link.target ?? null}
       className="block"
     >
       <div className={styles.Wrapper}>

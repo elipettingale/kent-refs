@@ -75,7 +75,8 @@ html {
   }
 
   .wp-block-columns {
-    @apply flex gap-6;
+    @apply flex gap-12;
+    /* todo: not for 3 or more cols? */
 
     @media screen and (max-width: 749px) {
       @apply flex-col;
