@@ -238,12 +238,12 @@ export const getPostBySlug = async (
   return data(response)[postType];
 };
 
-export const getUpcomingEvents = async () => {
+export const getUpcomingEvents = async (first = 3) => {
   let response = await client.query({
     query: gql`
       ${media}
       query GetUpcomingEvents {
-        events(first: 3) {
+        events(first: ${first}, where: { isUpcoming: true }) {
           pageInfo {
             hasNextPage
             endCursor
