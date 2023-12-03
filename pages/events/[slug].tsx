@@ -16,11 +16,28 @@ export default function Page({ event }: any) {
     <div>
       <Banner title={event.title} />
       <div className="bg-grey-100 py-12">
-        <div className="container-md mx-auto">
-          <div className="flex gap-8">
+        <div className="container-sm mx-auto">
+          <Card className="p-8 flex gap-8">
             <div className="flex-1">
               <p className="text-4xl  font-roboto mb-2">{date}</p>
               <p className="text-2xl text-grey-800 mb-4">{time}</p>
+              <div className="mb-6">
+                <p className="text-2xl font-roboto text-blue ">Venue</p>
+                <div className="italic">
+                  <p>{venue}</p>
+                  <p>{renderHTML(address)}</p>
+                </div>
+              </div>
+              {phone && (
+                <div className="mb-1">
+                  <PhoneIcon fill="blue" size={25} /> {phone}
+                </div>
+              )}
+              {event.content && (
+                <div className="copy mt-4">{renderContent(event.content)}</div>
+              )}
+            </div>
+            <div className="flex-1">
               <div className="relative aspect-[5/4] rounded overflow-hidden">
                 <Image
                   src={event.featuredImage.node.sourceUrl}
@@ -29,28 +46,7 @@ export default function Page({ event }: any) {
                 />
               </div>
             </div>
-            <div className="flex-1">
-              <Card className="p-8">
-                <div className="mb-6">
-                  <p className="text-2xl font-roboto text-blue ">Venue</p>
-                  <div className="italic">
-                    <p>{venue}</p>
-                    <p>{renderHTML(address)}</p>
-                  </div>
-                </div>
-                {phone && (
-                  <div className="mb-1">
-                    <PhoneIcon fill="blue" size={25} /> {phone}
-                  </div>
-                )}
-                {event.content && (
-                  <div className="copy mt-4">
-                    {renderContent(event.content)}
-                  </div>
-                )}
-              </Card>
-            </div>
-          </div>
+          </Card>
         </div>
       </div>
     </div>

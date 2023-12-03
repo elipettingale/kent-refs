@@ -19,7 +19,7 @@ export default function GravityForm({ full = false }: any) {
   if (submitted) {
     return (
       <div>
-        <p>Thank you, we'll be in touch soon.</p>
+        <p>{"Thank you, we'll be in touch soon."}</p>
       </div>
     );
   }
