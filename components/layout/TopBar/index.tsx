@@ -11,7 +11,7 @@ export default function TopBar() {
     <div className={styles.TopBar}>
       <div className={styles.TopBar__Inner}>
         <SocialIcons {...theme.social} />
-        <Search />
+        {/* <Search /> */}
       </div>
     </div>
   );
