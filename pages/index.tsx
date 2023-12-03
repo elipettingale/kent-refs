@@ -37,11 +37,11 @@ export default function Page({ page, latestNews, upcomingEvents }: Props) {
     <div>
       <FullBanner {...fields.banner} />
       <Steps className="translate-y-[-50%]" steps={fields.steps} />
-      <div className="container mx-auto mb-12">
+      <div className="container-lg mx-auto mb-12">
         <Gallery images={fields.gallery} />
       </div>
       <div className="bg-grey-100 py-12">
-        <div className="container mx-auto">
+        <div className="container-lg mx-auto">
           <LatestNewsAndEvents posts={latestNews} events={upcomingEvents} />
         </div>
       </div>
@@ -51,9 +51,9 @@ export default function Page({ page, latestNews, upcomingEvents }: Props) {
         }}
       >
         <div className="bg-[rgba(0,0,0,0.75)]">
-          <div className="container mx-auto py-12">
+          <div className="container-lg mx-auto py-12">
             <p className="text-4xl text-white font-roboto mb-12">
-              <LinesIcon /> Recent Tweets
+              <LinesIcon color="white" /> Recent Tweets
             </p>
             <LatestTweets />
           </div>

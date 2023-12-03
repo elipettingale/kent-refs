@@ -3,15 +3,22 @@ import styles from "./index.module.css";
 import Link from "next/link";
 
 interface Props {
+  className: string;
   date: string;
   link: Url;
   theme: "grey" | "blue";
   children: any;
 }
 
-export default function Tweet({ date, link, theme, children }: Props) {
+export default function Tweet({
+  className,
+  date,
+  link,
+  theme,
+  children,
+}: Props) {
   return (
-    <Link href={link}>
+    <Link className={className} href={link}>
       <div className={`${styles.Tweet} ${styles[`Tweet--${theme}`]}`}>
         <div className={styles.Top}>{children}</div>
         <div className={styles.Bottom}>

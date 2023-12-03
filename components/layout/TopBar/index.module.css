@@ -1,7 +1,0 @@
-.TopBar {
-  @apply bg-slate text-white py-1.5;
-
-  &__Inner {
-    @apply container mx-auto flex justify-between;
-  }
-}

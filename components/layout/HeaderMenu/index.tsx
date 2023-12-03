@@ -2,6 +2,7 @@ import Logo from "@/components/common/Logo";
 import { flatListToHierarchical } from "@/src/lib/helpers";
 import { MenuType } from "@/src/lib/types";
 import Link from "next/link";
+import MobileMenu from "../MobileMenu";
 
 const styles = require("./index.module.css");
 
@@ -36,13 +37,14 @@ export default function HeaderMenu({ menu }: Props) {
 
   return (
     <div className={styles.Wrapper}>
-      <div className={styles.Inner}>
+      <div className="container-lg mx-auto flex justify-between">
         <Link href="/">
           <Logo className={styles.Logo} />
         </Link>
         <nav className={styles.Menu}>
           <ul>{items.map((item) => renderMenuItem(item))}</ul>
         </nav>
+        <MobileMenu items={items} />
       </div>
     </div>
   );

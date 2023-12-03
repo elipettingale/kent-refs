@@ -2,14 +2,12 @@ import SocialIcons from "@/components/common/SocialIcons";
 import useThemeOptions from "@/src/hooks/useThemeOptions";
 import Search from "../Search";
 
-const styles = require("./index.module.css");
-
 export default function TopBar() {
   const [theme] = useThemeOptions();
 
   return (
-    <div className={styles.TopBar}>
-      <div className={styles.TopBar__Inner}>
+    <div className="bg-slate text-white py-2">
+      <div className="container-lg mx-auto flex justify-between">
         <SocialIcons {...theme.social} />
         {/* <Search /> */}
       </div>

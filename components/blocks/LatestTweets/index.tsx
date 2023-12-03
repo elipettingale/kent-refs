@@ -5,8 +5,13 @@ interface Props {}
 
 export default function LatestTweets({}: Props) {
   return (
-    <div className={styles.Wrapper}>
-      <Tweet link="#" theme="grey" date="2nd September, 2023">
+    <div className="block md:flex gap-8">
+      <Tweet
+        className="block flex-1 mb-6"
+        link="#"
+        theme="grey"
+        date="2nd September, 2023"
+      >
         <p>
           Have you thought about picking up the whistle and becoming a rugby
           referee? Or just wanting to increase your knowledge around the laws or
@@ -17,7 +22,12 @@ export default function LatestTweets({}: Props) {
           and you can book your place here
         </p>
       </Tweet>
-      <Tweet link="#" theme="blue" date="2nd September, 2023">
+      <Tweet
+        className="block flex-1 mb-6"
+        link="#"
+        theme="blue"
+        date="2nd September, 2023"
+      >
         <p>To All Members: Sunday 03/09/2023</p>
         <p>Please see below for our conference agenda.</p>
         <p>
@@ -30,7 +40,12 @@ export default function LatestTweets({}: Props) {
         </p>
         <p>Special Guest George Selwood</p>
       </Tweet>
-      <Tweet link="#" theme="grey" date="2nd September, 2023">
+      <Tweet
+        className="block flex-1 mb-6"
+        link="#"
+        theme="grey"
+        date="2nd September, 2023"
+      >
         <p>Places still available</p>
         <p>
           Kent Referee’s Society is running another Introduction to Referee

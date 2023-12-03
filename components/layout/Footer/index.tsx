@@ -19,8 +19,8 @@ export default function Footer({ menu }: Props) {
 
   return (
     <footer className={styles.Footer}>
-      <div className="container mx-auto">
-        <div className="flex gap-12">
+      <div className="container-lg mx-auto">
+        <div className="flex flex-col items-center md:flex-row md:items-start gap-12">
           <div className={styles.Column}>
             <HorseLogo height="150px" />
             <p>{footer.text}</p>

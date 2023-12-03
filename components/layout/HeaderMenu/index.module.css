@@ -2,16 +2,12 @@
   @apply bg-white;
 }
 
-.Inner {
-  @apply container mx-auto flex justify-between;
-}
-
 .Logo {
   @apply py-2 h-20;
 }
 
 .Menu {
-  @apply flex items-center;
+  @apply hidden xl:flex items-center;
   z-index: 2;
 
   > ul {

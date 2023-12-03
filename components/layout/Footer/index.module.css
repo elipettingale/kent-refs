@@ -13,5 +13,5 @@
 }
 
 .Column {
-  @apply w-[33.33%] flex flex-col items-start gap-4;
+  @apply w-[100%] md:w-[33.33%] flex flex-col items-start gap-4;
 }
