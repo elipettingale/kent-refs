@@ -24,8 +24,8 @@ export default function Page({ page }: Props) {
       <Banner title={page.title} />
       <div className="bg-grey-100 py-12">
         <div className={`container-${container} mx-auto`}>
-          <div className="flex gap-8">
-            <Card className="flex-1 copy p-8">
+          <div className="md:flex gap-8">
+            <Card className="flex-1 copy p-8 mb-8 md:mb-0">
               {renderContent(page.content)}
             </Card>
             <Card className="flex-1 copy p-8">

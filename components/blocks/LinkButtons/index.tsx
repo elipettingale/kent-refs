@@ -11,7 +11,7 @@ interface Props {
 
 export default function LinkButtons({ links }: Props) {
   return (
-    <div className="flex gap-2">
+    <div className="flex flex-wrap gap-2">
       {links.map((link, index) => (
         <LinkButton key={index} {...link} />
       ))}

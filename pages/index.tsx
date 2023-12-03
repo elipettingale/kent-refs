@@ -6,6 +6,7 @@ import Steps from "@/components/blocks/Steps";
 import LinesIcon from "@/components/common/LinesIcon";
 import {
   getGlobal,
+  getLatestTweets,
   getPageBySlug,
   getPosts,
   getUpcomingEvents,
@@ -17,6 +18,7 @@ interface Props {
   page: HomePageType;
   latestNews: PaginatedPostsType;
   upcomingEvents: PaginatedPostsType;
+  tweets: PaginatedPostsType;
 }
 
 interface HomePageType extends PageType {
@@ -30,7 +32,12 @@ interface HomePageType extends PageType {
   };
 }
 
-export default function Page({ page, latestNews, upcomingEvents }: Props) {
+export default function Page({
+  page,
+  latestNews,
+  upcomingEvents,
+  tweets,
+}: Props) {
   let fields = page.homeFields;
 
   return (
@@ -48,6 +55,7 @@ export default function Page({ page, latestNews, upcomingEvents }: Props) {
       <div
         style={{
           backgroundImage: `url(${fields.social.backgroundImage.sourceUrl})`,
+          backgroundSize: "cover",
         }}
       >
         <div className="bg-[rgba(0,0,0,0.75)]">
@@ -55,7 +63,7 @@ export default function Page({ page, latestNews, upcomingEvents }: Props) {
             <p className="text-4xl text-white font-roboto mb-12">
               <LinesIcon color="white" /> Recent Tweets
             </p>
-            <LatestTweets />
+            <LatestTweets tweets={tweets.edges} />
           </div>
         </div>
       </div>
@@ -67,6 +75,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const global = await getGlobal();
   const latestNews = await getPosts("posts", { first: 2 });
   const upcomingEvents = await getUpcomingEvents();
+  const tweets = await getLatestTweets();
   const page = await getPageBySlug(
     "/home",
     `homeFields {
@@ -102,6 +111,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       seo: page?.seo,
       latestNews: latestNews,
       upcomingEvents: upcomingEvents,
+      tweets: tweets,
     },
     revalidate: 10,
   };

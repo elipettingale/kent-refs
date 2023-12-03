@@ -30,7 +30,7 @@ export default function FullBanner({
             </p>
             <img
               className={styles.Cutout}
-              src="https://kent-refs-cms.elliotpettingale.co.uk/wp-content/uploads/2023/11/cutout.png"
+              src="https://kent-refs-cms.elliotpettingale.co.uk/wp-content/uploads/2023/12/cutout.png"
             />
           </div>
         </div>

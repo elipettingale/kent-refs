@@ -37,7 +37,7 @@ export default function Page({ page, events }: Props) {
             </Card>
           )}
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="md:grid grid-cols-2 gap-4">
             <div>
               <Link
                 key={firstEvent.id}

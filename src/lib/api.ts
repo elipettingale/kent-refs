@@ -274,3 +274,24 @@ export const getUpcomingEvents = async (first = 3) => {
 
   return data(response).events;
 };
+
+export const getLatestTweets = async () => {
+  let response = await client.query({
+    query: gql`
+      query GetLatestTweets {
+        tweets(first: 3) {
+          edges {
+            node {
+              id
+              title
+              date
+              content
+            }
+          }
+        }
+      }
+    `,
+  });
+
+  return data(response).tweets;
+};
