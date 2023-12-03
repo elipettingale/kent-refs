@@ -262,6 +262,7 @@ export const getUpcomingEvents = async () => {
                 date
                 time
                 venue
+                address
               }
             }
           }

@@ -44,6 +44,10 @@ export function renderContent(content: string | null) {
   });
 }
 
+export function renderHTML(content: string) {
+  return parse(content);
+}
+
 export function flatListToHierarchical(data: any[]) {
   const tree: any[] = [];
   const childrenOf: any = {};
