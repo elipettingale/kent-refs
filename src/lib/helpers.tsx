@@ -31,10 +31,18 @@ export function renderMultiContent(content: string | null) {
     <>
       {sections.map((section, index) => {
         if (index === 0) {
-          return <Card className="copy p-8">{parse(section)}</Card>;
+          return (
+            <Card key={index} className="copy p-8">
+              {renderContent(section)}
+            </Card>
+          );
         }
 
-        return <Card className="copy p-8 mt-8">{parse(section)}</Card>;
+        return (
+          <Card key={index} className="copy p-8 mt-8">
+            {renderContent(section)}
+          </Card>
+        );
       })}
     </>
   );
