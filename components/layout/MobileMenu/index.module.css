@@ -1,11 +1,24 @@
 .Wrapper {
-  @apply bg-white fixed top-0 left-0 z-40 w-screen h-screen transition-transform p-8;
+  @apply block fixed top-0 left-0 z-40 w-screen h-screen bg-[rgba(0,0,0,0.8)] transition-opacity;
 
   &--isClosed {
-    @apply -translate-x-full;
+    @apply opacity-0 pointer-events-none;
+
+    .Inner {
+      @apply -translate-x-full;
+    }
   }
 }
 
+.Inner {
+  @apply relative bg-white w-[95%] max-w-[800px] h-full shadow-lg p-8 transition-transform;
+}
+
 .Close {
-  @apply absolute top-0 right-0 p-8 flex items-center;
+  @apply cursor-pointer flex items-center mt-4;
+  transition: all 100ms ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 }

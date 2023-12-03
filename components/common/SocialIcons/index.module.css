@@ -2,7 +2,7 @@
   @apply flex gap-1;
 
   li {
-    @apply bg-slate-400 text-slate-300 h-7 w-7 flex justify-center items-center rounded cursor-pointer;
+    @apply bg-slate-400 text-slate-300 h-9 w-9 sm:h-7 sm:w-7 flex justify-center items-center rounded cursor-pointer;
 
     &:hover {
       @apply text-white bg-[var(--color)];

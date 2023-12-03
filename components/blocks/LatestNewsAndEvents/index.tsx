@@ -15,8 +15,8 @@ interface Props {
 
 export default function LatestNewsAndEvents({ posts, events }: Props) {
   return (
-    <div className="flex py-4">
-      <div className="w-[65%] flex flex-col gap-8 mr-8">
+    <div className="lg:flex py-4">
+      <div className="lg:w-[65%] flex flex-col gap-8 mb-8 lg:mr-8 lg:mb-0">
         <p className="text-4xl font-roboto">
           <LinesIcon /> Latest News
         </p>
@@ -27,15 +27,15 @@ export default function LatestNewsAndEvents({ posts, events }: Props) {
             target="_blank"
             className={styles.Card}
           >
-            <Card className="flex">
-              <div className="w-[45%] relative aspect-square">
+            <Card className="flex flex-col lg:flex-row">
+              <div className="lg:w-[45%] aspect-[5/3] relative lg:aspect-square">
                 <Image
                   src={post.featuredImage.node.sourceUrl}
                   alt={post.featuredImage.node.altText}
                   fill
                 />
               </div>
-              <div className="w-[55%] p-8">
+              <div className="lg:w-[55%] p-8">
                 <div className="flex flex-col gap-2 mb-6">
                   <p className="text-3xl font-roboto">{post.title}</p>
                   <div className="text-lg">{renderContent(post.excerpt)}</div>
@@ -56,7 +56,7 @@ export default function LatestNewsAndEvents({ posts, events }: Props) {
           </Link>
         ))}
       </div>
-      <div className="w-[35%] flex flex-col gap-8">
+      <div className="lg:w-[35%] flex flex-col gap-8">
         <p className="text-4xl font-roboto">
           <LinesIcon /> Upcoming Events
         </p>

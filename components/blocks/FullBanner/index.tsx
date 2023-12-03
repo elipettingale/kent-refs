@@ -13,7 +13,7 @@ export default function FullBanner({
   titleBottom,
 }: Props) {
   return (
-    <div className="h-[100vh] max-h-[600px]">
+    <div className={styles.Wrapper}>
       <div
         className="h-full bg-cover"
         style={{

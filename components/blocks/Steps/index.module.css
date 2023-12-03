@@ -5,7 +5,7 @@
 }
 
 .Step {
-  @apply flex-1 flex p-6 relative overflow-hidden cursor-pointer;
+  @apply text-center md:text-left flex-grow p-4 md:p-6 relative overflow-hidden cursor-pointer;
 
   &:not(:last-child) {
     @apply border-r-2 border-slate-400;
