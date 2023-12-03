@@ -7,6 +7,9 @@ export interface PageType {
     title: string;
     fullHead: string;
   };
+  pageFields: {
+    container: string;
+  };
 }
 
 export interface MediaType {
