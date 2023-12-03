@@ -218,6 +218,7 @@ export const getPostBySlug = async (
 ) => {
   let response = await client.query({
     query: gql`
+      ${importFragments(acfFields)}
       query GetPostData($slug: ID = "${slug}") {
         ${postType}(id: $slug, idType: URI) {
           id
