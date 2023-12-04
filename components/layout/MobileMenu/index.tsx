@@ -19,7 +19,10 @@ export default function MobileMenu({ items }: any) {
   const renderMenuItem = ({ id, path, label, children }: any) => {
     return (
       <li key={id} className="mb-2 text-grey-800" onClick={close}>
-        <Link href={path} className="text-3xl font-roboto">
+        <Link
+          href={path}
+          className="text-4xl font-roboto hover:text-blue cursor-pointer"
+        >
           {label}
         </Link>
         {children.length > 0 ? (

@@ -18,7 +18,7 @@ export default function Page({ event }: any) {
       <div className="bg-grey-100 py-12">
         <div className="container-sm mx-auto">
           <Card className="p-8">
-            <div className="flex gap-8">
+            <div className="md:flex gap-8">
               <div className="flex-1">
                 <p className="text-4xl  font-roboto mb-2">{date}</p>
                 <p className="text-2xl text-grey-800 mb-4">{time}</p>
@@ -37,7 +37,7 @@ export default function Page({ event }: any) {
                   </div>
                 )}
               </div>
-              <div className="flex-1">
+              <div className="flex-1 mt-6 md:mt-0">
                 <div className="relative aspect-[5/4] rounded overflow-hidden">
                   <Image
                     src={event.featuredImage.node.sourceUrl}
