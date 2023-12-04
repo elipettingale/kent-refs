@@ -36,7 +36,7 @@ export default function LatestNewsAndEvents({ posts, events }: Props) {
                 />
               </div>
               <div className="lg:w-[55%] p-8">
-                <div className="flex flex-col gap-2 mb-6">
+                <div className="flex flex-col gap-2 mb-6 relative">
                   <p className="text-3xl font-roboto">{post.title}</p>
                   <div className="text-lg">{renderContent(post.excerpt)}</div>
                   <div className="absolute bottom-0 right-0 p-4">
