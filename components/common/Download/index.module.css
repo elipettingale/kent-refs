@@ -1,5 +1,5 @@
 .Download {
-  @apply bg-slate-500 p-4 rounded flex;
+  @apply bg-slate-500 p-4 rounded flex w-full justify-between;
 
   &:hover {
     @apply opacity-95;

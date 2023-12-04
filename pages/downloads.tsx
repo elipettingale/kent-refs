@@ -13,6 +13,33 @@ interface Props {
   downloads: any;
 }
 
+const sections = [
+  {
+    name: "Referees",
+    key: "referees",
+  },
+  {
+    name: "Advisors",
+    key: "advisors",
+  },
+  {
+    name: "Rules & Regs",
+    key: "rules-and-regs",
+  },
+  {
+    name: "Clubs",
+    key: "clubs",
+  },
+  {
+    name: "Schools",
+    key: "schools",
+  },
+  {
+    name: "AGM Policies",
+    key: "agm-policies",
+  },
+];
+
 function renderSection(title: string, downloads: any[]) {
   if (downloads.length === 0) {
     return;
@@ -47,7 +74,7 @@ export default function Page({ page, downloads }: Props) {
     <div>
       <Banner title={page.title} />
       <div className="bg-grey-100 py-12">
-        <div className="container-md mx-auto">
+        <div className="container-sm mx-auto">
           <Card className="p-8">
             {page.content && (
               <div className="copy mb-8">{renderContent(page.content)}</div>
@@ -59,18 +86,16 @@ export default function Page({ page, downloads }: Props) {
                 value={search}
                 onChange={(event: any) => setSearch(event.target.value)}
               />
-              {renderSection("Referees", downloadsForSection("referees"))}
-              {renderSection("Advisors", downloadsForSection("advisors"))}
-              {renderSection(
-                "Rules & Regs",
-                downloadsForSection("rules-and-regs")
-              )}
-              {renderSection("Clubs", downloadsForSection("clubs"))}
-              {renderSection("Schools", downloadsForSection("schools"))}
-              {renderSection(
-                "AGM Policies",
-                downloadsForSection("agm-policies")
-              )}
+              <div className="md:grid grid-cols-2 gap-4">
+                {sections.map((section) => (
+                  <div key={section.key}>
+                    {renderSection(
+                      section.name,
+                      downloadsForSection(section.key)
+                    )}
+                  </div>
+                ))}
+              </div>
             </div>
           </Card>
         </div>
