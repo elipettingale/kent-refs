@@ -9,35 +9,71 @@ interface Props {}
 
 export default function MobileMenu({ items }: any) {
   const [isOpen, setIsOpen] = useState(false);
+  const [expanded, setExpanded] = useState<string | null>(null);
 
   const close = () => {
     setTimeout(() => {
       setIsOpen(false);
     }, 100);
+
+    setTimeout(() => {
+      setExpanded(null);
+    }, 200);
+  };
+
+  const expand = (id: string) => {
+    if (expanded === id) {
+      return setExpanded(null);
+    }
+
+    return setExpanded(id);
   };
 
   const renderMenuItem = ({ id, path, label, children }: any) => {
     return (
-      <li key={id} className="mb-3 text-grey-800" onClick={close}>
-        <Link
-          href={path}
-          className="text-4xl font-roboto hover:text-blue cursor-pointer"
-        >
-          {label}
-        </Link>
+      <li key={id} className="mb-3 text-grey-800">
         {children.length > 0 ? (
-          <ul className="hidden">
-            {children.map((child: any) => renderMenuSubItem(child))}
-          </ul>
-        ) : null}
+          <>
+            <div
+              className="text-4xl font-roboto hover:text-blue cursor-pointer"
+              onClick={() => expand(id)}
+            >
+              {label}
+            </div>
+            <ul
+              className={BEM(styles, "SubMenu", {
+                isExpanded: expanded === id,
+              })}
+            >
+              <li className="text-2xl mb-2">
+                <Link href={path} onClick={close}>
+                  {label}
+                </Link>
+              </li>
+              {children.map((child: any) => renderMenuSubItem(child))}
+            </ul>
+          </>
+        ) : (
+          <>
+            <Link
+              href={path}
+              className="text-4xl font-roboto hover:text-blue cursor-pointer"
+              onClick={close}
+            >
+              {label}
+            </Link>
+          </>
+        )}
       </li>
     );
   };
 
   const renderMenuSubItem = ({ id, path, label, children }: any) => {
     return (
-      <li key={id}>
-        <Link href={path}>{label}</Link>
+      <li key={id} className="text-2xl mb-2">
+        <Link href={path} onClick={close}>
+          {label}
+        </Link>
         {children.length > 0 ? (
           <ul>{children.map((child: any) => renderMenuSubItem(child))}</ul>
         ) : null}
@@ -86,7 +122,7 @@ export default function MobileMenu({ items }: any) {
               </div>
               <HorseLogo className="w-24" />
             </div>
-            <div className={styles.Close} onClick={() => setIsOpen(false)}>
+            <div className={styles.Close} onClick={close}>
               <p className="text-2xl font-roboto mr-2">Close</p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
