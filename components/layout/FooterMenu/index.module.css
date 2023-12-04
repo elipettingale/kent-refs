@@ -2,7 +2,7 @@
   @apply flex items-center;
 
   > ul {
-    @apply h-full flex gap-6;
+    @apply h-full text-right block md:flex gap-6;
   }
 
   &__Item {
