@@ -18,7 +18,7 @@ export default function Tweet({
   children,
 }: Props) {
   return (
-    <Link className={className} href={link}>
+    <div className={className}>
       <div className={`${styles.Tweet} ${styles[`Tweet--${theme}`]}`}>
         <div className={styles.Top}>{children}</div>
         <div className={styles.Bottom}>
@@ -37,6 +37,6 @@ export default function Tweet({
           </svg>
         </div>
       </div>
-    </Link>
+    </div>
   );
 }
