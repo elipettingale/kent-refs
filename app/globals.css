@@ -51,6 +51,22 @@ html {
     }
   }
 
+  .has-blue-background-color {
+    @apply bg-blue;
+  }
+
+  .has-slate-background-color {
+    @apply bg-slate-900;
+  }
+
+  .wp-block-group {
+    padding: 2rem;
+
+    > *:not(:last-child) {
+      margin-bottom: 2rem;
+    }
+  }
+
   ul,
   ol {
     list-style: unset;
