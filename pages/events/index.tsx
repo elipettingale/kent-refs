@@ -135,7 +135,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     `
   );
 
-  const events = await getUpcomingEvents(6);
+  const events = await getUpcomingEvents(100);
 
   return {
     props: {
