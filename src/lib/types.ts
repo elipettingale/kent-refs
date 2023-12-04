@@ -30,6 +30,10 @@ export interface ImageType {
   title: string;
   height: number;
   width: number;
+  sizes: {
+    large: string;
+    thumbnail: string;
+  };
 }
 
 export interface PostType {
