@@ -38,7 +38,7 @@ export default function Footer({ menu }: Props) {
               {footer.gallery.map((image: MediaType) => (
                 <div
                   key={image.id}
-                  className="h-full w-full aspect-[4/3] relative rounded overflow-hidden"
+                  className="w-full aspect-[4/3] relative rounded overflow-hidden"
                 >
                   <Image src={image.sourceUrl} alt={image.altText} fill />
                 </div>
