@@ -97,10 +97,14 @@ html {
 
   .wp-block-image {
     figure.aligncenter {
-      @apply text-center;
-
       img {
         margin: auto;
+      }
+    }
+
+    figure.alignright {
+      img {
+        margin-left: auto;
       }
     }
   }

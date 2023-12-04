@@ -35,7 +35,7 @@ const sections = [
     key: "schools",
   },
   {
-    name: "AGM Policies",
+    name: "Policies & Protocols",
     key: "agm-policies",
   },
 ];

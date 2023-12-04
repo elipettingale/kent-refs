@@ -11,12 +11,7 @@ export default function Gallery({ images }: Props) {
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
       {images.map((image) => (
         <div key={image.id} className={styles.Item}>
-          <Image
-            src={image.sourceUrl}
-            alt={image.altText}
-            width={image.mediaDetails.width}
-            height={image.mediaDetails.height}
-          />
+          <Image src={image.sourceUrl} alt={image.altText} fill />
         </div>
       ))}
     </div>
