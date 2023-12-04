@@ -46,7 +46,7 @@ function renderSection(title: string, downloads: any[]) {
   }
 
   return (
-    <div className="mt-6">
+    <div className="pt-8">
       <p className="text-2xl mb-2 font-roboto">{title}</p>
       <div className="flex flex-wrap gap-2">
         {downloads.map(({ node: download }: any) => (
@@ -86,9 +86,9 @@ export default function Page({ page, downloads }: Props) {
                 value={search}
                 onChange={(event: any) => setSearch(event.target.value)}
               />
-              <div className="md:grid grid-cols-2 gap-4">
+              <div className="md:columns-2 gap-12 mt-[-1rem]">
                 {sections.map((section) => (
-                  <div key={section.key}>
+                  <div key={section.key} className="break-inside-avoid">
                     {renderSection(
                       section.name,
                       downloadsForSection(section.key)
