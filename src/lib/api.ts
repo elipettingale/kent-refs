@@ -40,6 +40,7 @@ export const getThemeOptions = async () => {
             social {
               twitterUrl
               facebookUrl
+              instagramUrl
             }
             defaults {
               bannerImage {

@@ -94,6 +94,7 @@ export interface ThemeOptionsType {
   social: {
     facebookUrl: string;
     twitterUrl: string;
+    instagramUrl: string;
   };
   defaults: {
     bannerImage: MediaType;

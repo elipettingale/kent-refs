@@ -42,6 +42,7 @@ export default function GravityForm({ full = false }: any) {
     <form className="w-full" onSubmit={onSubmit}>
       <Input type="text" placeholder="Your Name" required />
       <Input type="text" placeholder="Your Email Address" required />
+      <TextArea placeholder="Message" rows={4} required />
       <div className="text-right">
         <Button>Submit</Button>
       </div>
