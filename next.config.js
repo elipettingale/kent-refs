@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["localhost", "wordpress", "kent-refs-cms.elliotpettingale.co.uk"],
+    domains: ["localhost", "wordpress", "cms.kentrefs.co.uk"],
   },
 };
 

@@ -10,7 +10,6 @@ interface Props {
 }
 
 export default function Card({ picture, title, link }: Props) {
-  console.log(picture);
   return (
     <Link
       href={link.url ?? "#"}

@@ -10,8 +10,6 @@ import PhoneIcon from "@/components/common/PhoneIcon";
 export default function Page({ event }: any) {
   const { date, time, venue, phone, address } = event.eventFields;
 
-  console.log(event);
-
   return (
     <div>
       <Banner title={event.title} />

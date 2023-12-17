@@ -7,7 +7,6 @@ interface Props {
 }
 
 export default function LatestTweets({ tweets }: Props) {
-  console.log(tweets);
   return (
     <div className="block md:flex gap-8">
       {tweets.map(({ node: tweet }, index) => (
