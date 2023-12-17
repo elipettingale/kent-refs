@@ -8,12 +8,17 @@ interface Props {}
 export default function GravityForm({ full = false }: any) {
   const [submitted, setSubmitted] = useState(false);
 
-  const onSubmit = (event: any) => {
+  const onSubmit = async (event: any) => {
     event.preventDefault();
 
-    setTimeout(() => {
-      setSubmitted(true);
-    }, 300);
+    var formData = new FormData(event.target);
+
+    await fetch("https://cms.kentrefs.co.uk/wp-json/ejp/v1/gravity-form", {
+      method: "POST",
+      body: formData,
+    });
+
+    setSubmitted(true);
   };
 
   if (submitted) {
@@ -27,10 +32,15 @@ export default function GravityForm({ full = false }: any) {
   if (full) {
     return (
       <form className="w-full" onSubmit={onSubmit}>
-        <Input type="text" placeholder="Your Name" required />
-        <Input type="text" placeholder="Your Email Address" required />
-        <Input type="text" placeholder="Subject" required />
-        <TextArea placeholder="Message" rows={6} required />
+        <Input name="name" type="text" placeholder="Your Name" required />
+        <Input
+          name="email"
+          type="text"
+          placeholder="Your Email Address"
+          required
+        />
+        <Input name="subject" type="text" placeholder="Subject" required />
+        <TextArea name="message" placeholder="Message" rows={6} required />
         <div className="text-right">
           <Button>Submit</Button>
         </div>
@@ -40,9 +50,14 @@ export default function GravityForm({ full = false }: any) {
 
   return (
     <form className="w-full" onSubmit={onSubmit}>
-      <Input type="text" placeholder="Your Name" required />
-      <Input type="text" placeholder="Your Email Address" required />
-      <TextArea placeholder="Message" rows={4} required />
+      <Input name="name" type="text" placeholder="Your Name" required />
+      <Input
+        name="email"
+        type="text"
+        placeholder="Your Email Address"
+        required
+      />
+      <TextArea name="message" placeholder="Message" rows={4} required />
       <div className="text-right">
         <Button>Submit</Button>
       </div>
