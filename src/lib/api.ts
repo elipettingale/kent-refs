@@ -172,7 +172,8 @@ export const getAllPostsForTaxonomy = async (
 
 export const getPosts = async (
   postType: string,
-  options: { first?: Number; after?: String } = {}
+  options: { first?: Number; after?: String } = {},
+  fields: string = ""
 ) => {
   let search = `first: ${options.first ?? 12}`;
 
@@ -202,6 +203,7 @@ export const getPosts = async (
                       ...media
                     }
                   }
+                  ${fields}
               }
           }
         }
@@ -295,4 +297,23 @@ export const getLatestTweets = async () => {
   });
 
   return data(response).tweets;
+};
+
+export const getForm = async (id: number) => {
+  let auth = btoa(
+    `ck_0c6f8e4bcb3aeb70656cf3d23c0310a2fc8feb02:cs_88ea57d0a8d525a04c61a7fa8caa67239ad11c90`
+  );
+
+  let response = await fetch(
+    process.env.NEXT_PUBLIC_REST_URL + `/gf/v2/forms/${id}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Basic ${auth}`,
+      },
+    }
+  );
+
+  return await response.json();
 };

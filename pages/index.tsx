@@ -73,7 +73,15 @@ export default function Page({
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const global = await getGlobal();
-  const latestNews = await getPosts("posts", { first: 2 });
+  const latestNews = await getPosts(
+    "posts",
+    { first: 2 },
+    `
+      postFields {
+        facebookUrl
+      }
+    `
+  );
   const upcomingEvents = await getUpcomingEvents();
   const tweets = await getLatestTweets();
   const page = await getPageBySlug(

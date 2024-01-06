@@ -23,7 +23,10 @@ export default function LatestNewsAndEvents({ posts, events }: Props) {
         {posts.edges.map(({ node: post }: any) => (
           <Link
             key={post.id}
-            href="https://www.facebook.com/kentrefs/?locale=en_GB"
+            href={
+              post.postFields?.facebookUrl ??
+              "https://www.facebook.com/kentrefs/?locale=en_GB"
+            }
             target="_blank"
             className={styles.Card}
           >
