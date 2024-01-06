@@ -1,3 +1,5 @@
+import { Url } from "url";
+
 export interface PageType {
   title: string;
   content: string;
