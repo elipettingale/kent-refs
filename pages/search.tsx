@@ -35,9 +35,11 @@ export default function Page() {
       <Banner title="Search" />
       <div className="bg-grey-100 py-12">
         <div className={`container-md mx-auto`}>
-          <div className="flex gap-4 justify-center">
+          <div className="flex flex-wrap gap-4 justify-center">
             {results.map((result) => (
-              <LinkButton href={result.link}>{result.title}</LinkButton>
+              <LinkButton key={result.id} href={result.link}>
+                {result.title}
+              </LinkButton>
             ))}
           </div>
         </div>

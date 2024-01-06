@@ -9,8 +9,8 @@ export default function Error404() {
       <Banner title="404: Not Found" />
       <div className="bg-grey-100 py-12">
         <div className={`container-sm mx-auto`}>
-          <Card className="copy">
-            <p>Sorry, we couldn't find what you were looking for.</p>
+          <Card className="copy p-8 text-center">
+            <p>Sorry, we could not find what you were looking for.</p>
           </Card>
         </div>
       </div>
