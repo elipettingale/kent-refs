@@ -19,6 +19,8 @@ export default function Search() {
       return;
     }
 
+    inputRef.current.blur();
+
     router.push(`/search?q=${q}`);
   };
 
