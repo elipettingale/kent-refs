@@ -41,8 +41,10 @@ export async function generateMetadata() {
 
   return {
     title: seo.title,
-    other: {
-      foo: 'bar' 
+    description: seo.metaDesc,
+    openGraph: {
+      title: seo.opengraphTitle,
+      description: seo.opengraphDescription
     }
   };
 }

@@ -133,6 +133,9 @@ export const getPageSEOBySlug = async (slug: string) => {
         page(id: $slug, idType: URI) {
          seo {
           title
+          metaDesc
+          opengraphTitle
+    	    opengraphDescription
          }
         }
       }
