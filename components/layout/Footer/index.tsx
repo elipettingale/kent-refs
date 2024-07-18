@@ -1,21 +1,18 @@
 import HorseLogo from "@/components/common/HorseLogo";
-import useThemeOptions from "@/src/hooks/useThemeOptions";
-import { MediaType, MenuType } from "@/src/lib/types";
+import { MediaType } from "@/src/lib/types";
 import FooterMenu from "../FooterMenu";
 import PhoneIcon from "@/components/common/PhoneIcon";
 import EmailIcon from "@/components/common/EmailIcon";
 import Image from "@/components/common/Image";
 import GravityForm from "@/components/blocks/GravityForm";
 import LinesIcon from "@/components/common/LinesIcon";
+import { getMenu, getThemeOptions } from "@/src/lib/api";
 
 const styles = require("./index.module.css");
 
-interface Props {
-  menu: MenuType;
-}
-
-export default function Footer({ menu }: Props) {
-  const [{ contact, footer }] = useThemeOptions();
+export default async function Footer() {
+  const {contact, footer} = await getThemeOptions();
+  const menu = await getMenu("main-menu");
 
   return (
     <footer className={styles.Footer}>

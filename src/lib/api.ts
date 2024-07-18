@@ -117,16 +117,29 @@ export const getPageBySlug = async (slug: string, acfFields: string = "") => {
           title
           content
 		      ${acfFields}
-          seo {
-            title
-            fullHead
-          }
         }
       }
     `,
   });
 
   return data(response).page;
+};
+
+
+export const getPageSEOBySlug = async (slug: string) => {
+  let response = await client.query({
+    query: gql`
+      query GetPageSEOBySlug($slug: ID! = "${slug}") {
+        page(id: $slug, idType: URI) {
+         seo {
+          title
+         }
+        }
+      }
+    `,
+  });
+
+  return data(response).page.seo;
 };
 
 export const getAllPosts = async (postType: string, fields = "slug") => {

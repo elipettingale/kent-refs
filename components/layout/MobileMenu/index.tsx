@@ -1,3 +1,5 @@
+'use client'
+
 import { BEM } from "@/src/lib/helpers";
 import styles from "./index.module.css";
 import { useState } from "react";

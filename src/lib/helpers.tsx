@@ -2,6 +2,17 @@ import { Suspense, lazy } from "react";
 import { gql } from "@apollo/client";
 import { media, thumbnail, link } from "./fragments";
 import Card from "@/components/common/Card";
+import CardBlock from "@/components/blocks/Card";
+import Banner from "@/components/blocks/Banner";
+import Contact from "@/components/blocks/Contact";
+import Contacts from "@/components/blocks/Contacts";
+import FullBanner from "@/components/blocks/FullBanner";
+import Gallery from "@/components/blocks/Gallery";
+import GravityForm from "@/components/blocks/GravityForm";
+import LatestNewsAndEvents from "@/components/blocks/LatestNewsAndEvents";
+import LatestTweets from "@/components/blocks/LatestTweets";
+import LinkButton from "@/components/blocks/LinkButton";
+import Steps from "@/components/blocks/Steps";
 
 const parse = require("html-react-parser");
 
@@ -61,8 +72,24 @@ export function renderContent(content: string | null) {
         return;
       }
 
+      const components: any = {
+        'Banner': Banner,
+        'Card': CardBlock,
+        'Contact': Contact,
+        'Contacts': Contacts,
+        'FullBanner': FullBanner,
+        'Gallery': Gallery,
+        'GravityForm': GravityForm,
+        'LatestNewsAndEvents': LatestNewsAndEvents,
+        'LatestTweets': LatestTweets,
+        'LinkButton': LinkButton,
+        'Steps': Steps
+      }
+
+      console.log('XX123', component);
+
       let props = JSON.parse(domNode.children[0].data);
-      const Block = lazy(() => import(`@/components/blocks/${component}`));
+      const Block: any = components[component];
 
       return (
         <Suspense fallback={null}>

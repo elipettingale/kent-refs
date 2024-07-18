@@ -1,6 +1,6 @@
 import { MediaType } from "@/src/lib/types";
 import styles from "./index.module.css";
-import useThemeOptions from "@/src/hooks/useThemeOptions";
+import { getThemeOptions } from "@/src/lib/api";
 
 interface Props {
   backgroundImage?: MediaType;
@@ -8,8 +8,8 @@ interface Props {
   subtitle?: string;
 }
 
-export default function Banner({ backgroundImage, title, subtitle }: Props) {
-  const [themeOptions] = useThemeOptions();
+export default async function Banner({ backgroundImage, title, subtitle }: Props) {
+  const themeOptions = await getThemeOptions();
 
   let backgroundSrc =
     backgroundImage?.sourceUrl ?? themeOptions.defaults.bannerImage.sourceUrl;

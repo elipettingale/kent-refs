@@ -1,22 +1,19 @@
 import Banner from "@/components/blocks/Banner";
 import GravityForm from "@/components/blocks/GravityForm";
 import Card from "@/components/common/Card";
-import { getGlobal, getPageBySlug } from "@/src/lib/api";
+import { getPageBySlug, getPageSEOBySlug } from "@/src/lib/api";
 import { renderContent } from "@/src/lib/helpers";
-import { PageType } from "@/src/lib/types";
-import { GetStaticProps } from "next";
 
-interface Props {
-  page: ContactUsPageType;
-}
+export default async function Page() {
+  const page = await getPageBySlug(
+    "/contact-us",
+    `
+      pageFields {
+        container
+      }
+    `
+  );
 
-interface ContactUsPageType extends PageType {
-  contactUsFields: {
-    foo: string;
-  };
-}
-
-export default function Page({ page }: Props) {
   const { container } = page.pageFields;
 
   return (
@@ -39,29 +36,13 @@ export default function Page({ page }: Props) {
   );
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const global = await getGlobal();
-  const page = await getPageBySlug(
-    "/contact-us",
-    `
-      pageFields {
-        container
-      }
-      contactUsFields {
-          bar
-          foo {
-            ...media
-          }
-      }
-    `
-  );
+export async function generateMetadata() {
+  const seo = await getPageSEOBySlug("/contact-us");
 
   return {
-    props: {
-      global: global,
-      page: page,
-      seo: page?.seo,
-    },
-    revalidate: 10,
+    title: seo.title,
+    other: {
+      foo: 'bar' 
+    }
   };
-};
+}

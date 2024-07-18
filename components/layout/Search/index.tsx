@@ -1,8 +1,10 @@
+'use client'
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useRef, useState } from "react";
 import { BEM } from "@/src/lib/helpers";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 const styles = require("./index.module.css");
 
