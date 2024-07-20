@@ -75,7 +75,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       global: global,
       page: page,
-      seo: page?.seo,
+      seo: page?.seo ?? null,
       laws: laws,
     },
     revalidate: 10,

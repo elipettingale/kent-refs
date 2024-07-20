@@ -43,7 +43,9 @@ export async function generateStaticParams() {
     );
   });
 
-  return pages.map((page: any) => {
-    slug: page.node.slug
+  return pages.map(({ node }: any) => {
+    return {
+      slug: node.slug
+    }
   });
 }

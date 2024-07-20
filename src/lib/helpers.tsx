@@ -12,6 +12,7 @@ import GravityForm from "@/components/blocks/GravityForm";
 import LatestNewsAndEvents from "@/components/blocks/LatestNewsAndEvents";
 import LatestTweets from "@/components/blocks/LatestTweets";
 import LinkButton from "@/components/blocks/LinkButton";
+import LinkButtons from "@/components/blocks/LinkButtons";
 import Steps from "@/components/blocks/Steps";
 
 const parse = require("html-react-parser");
@@ -83,10 +84,9 @@ export function renderContent(content: string | null) {
         'LatestNewsAndEvents': LatestNewsAndEvents,
         'LatestTweets': LatestTweets,
         'LinkButton': LinkButton,
+        'LinkButtons': LinkButtons,
         'Steps': Steps
       }
-
-      console.log('XX123', component);
 
       let props = JSON.parse(domNode.children[0].data);
       const Block: any = components[component];

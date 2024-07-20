@@ -80,7 +80,9 @@ export default async function Page({ params }: any) {
 export async function generateStaticParams() {
   const posts = await getAllPosts("events");
 
-  return posts.map((post: any) => {
-    slug: post.node.slug
+  return posts.map(({ node }: any) => {
+    return {
+      slug: node.slug
+    }
   });
 }
