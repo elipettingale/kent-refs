@@ -143,3 +143,14 @@ export function date(date: any) {
     day: "numeric",
   });
 }
+
+export function metadata(seo: any) {
+  return {
+    title: seo.title,
+    description: seo.metaDesc,
+    openGraph: {
+      title: seo.opengraphTitle,
+      description: seo.opengraphDescription
+    }
+  };
+}

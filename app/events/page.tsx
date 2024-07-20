@@ -1,26 +1,25 @@
 import {
-  getAllPosts,
-  getGlobal,
   getPageBySlug,
-  getPosts,
+  getPageSEOBySlug,
   getUpcomingEvents,
 } from "@/src/lib/api";
-import { GetStaticProps } from "next";
-import useLoadMorePosts from "@/src/hooks/useLoadMorePosts";
-import { PageType, PaginatedPostsType } from "@/src/lib/types";
-import Link from "next/link";
 import Banner from "@/components/blocks/Banner";
 import Card from "@/components/common/Card";
-import { clone, renderContent, renderHTML } from "@/src/lib/helpers";
+import { clone, metadata, renderContent, renderHTML } from "@/src/lib/helpers";
 import Image from "@/components/common/Image";
-import LinesIcon from "@/components/common/LinesIcon";
+import Link from "next/link";
 
-interface Props {
-  page: PageType;
-  events: any;
-}
+export default async function Page() {
+  const events = await getUpcomingEvents(100);
+  const page = await getPageBySlug(
+    "/events",
+    `
+      pageFields {
+        container
+      }
+    `
+  );
 
-export default function Page({ page, events }: Props) {
   const { container } = page.pageFields;
 
   const firstEvent = clone(events.edges[0]).node;
@@ -124,26 +123,7 @@ export default function Page({ page, events }: Props) {
   );
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const global = await getGlobal();
-  const page = await getPageBySlug(
-    "/events",
-    `
-      pageFields {
-        container
-      }
-    `
-  );
-
-  const events = await getUpcomingEvents(100);
-
-  return {
-    props: {
-      global: global,
-      page: page,
-      seo: page?.seo,
-      events: events,
-    },
-    revalidate: 10,
-  };
-};
+export async function generateMetadata({ params }: any) {
+  const seo = await getPageSEOBySlug('events');
+  return metadata(seo);
+}

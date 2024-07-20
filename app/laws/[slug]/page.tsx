@@ -3,8 +3,15 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { renderContent } from "@/src/lib/helpers";
 import Banner from "@/components/blocks/Banner";
 import Card from "@/components/common/Card";
+import { notFound } from "next/navigation";
 
-export default function Page({ law }: any) {
+export default async function Page({ params }: any) {
+  const law = await getPostBySlug("law", params?.slug as string);
+
+  if (!law) {
+    return notFound();
+  }
+
   return (
     <div>
       <Banner title={law.title} />
@@ -19,29 +26,16 @@ export default function Page({ law }: any) {
   );
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const global = await getGlobal();
-  const law = await getPostBySlug("law", params?.slug as string);
-
+export async function generateMetadata({ params }: any) {
   return {
-    notFound: law === null,
-    props: {
-      global: global,
-      law: law,
-      seo: law?.seo,
-    },
-    revalidate: 10,
-  };
-};
+    title: '...'
+  }
+}
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await getAllPosts("laws");
 
-  return {
-    paths:
-      posts.map(
-        ({ node }: { node: { slug: string } }) => `/laws/${node.slug}`
-      ) || [],
-    fallback: "blocking",
-  };
+  return posts.map((post: any) => {
+    slug: post.node.slug
+  });
 };

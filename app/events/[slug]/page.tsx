@@ -1,13 +1,35 @@
-import { getAllPosts, getGlobal, getPostBySlug } from "@/src/lib/api";
-import { GetStaticPaths, GetStaticProps } from "next";
+import { getAllPosts, getPostBySlug } from "@/src/lib/api";
 import { renderContent, renderHTML } from "@/src/lib/helpers";
 import Banner from "@/components/blocks/Banner";
 import Card from "@/components/common/Card";
-import LinesIcon from "@/components/common/LinesIcon";
 import Image from "@/components/common/Image";
 import PhoneIcon from "@/components/common/PhoneIcon";
+import { notFound } from "next/navigation";
 
-export default function Page({ event }: any) {
+export default async function Page({ params }: any) {
+  const event = await getPostBySlug(
+    "event",
+    params?.slug as string,
+    `
+    featuredImage {
+      node {
+        ...media
+      }
+    }
+    eventFields {
+        date
+        time
+        venue
+        phone
+        address
+    }
+  `
+  );
+
+  if (!event) {
+    return notFound();
+  }
+
   const { date, time, venue, phone, address } = event.eventFields;
 
   return (
@@ -55,46 +77,10 @@ export default function Page({ event }: any) {
   );
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const global = await getGlobal();
-  const event = await getPostBySlug(
-    "event",
-    params?.slug as string,
-    `
-    featuredImage {
-      node {
-        ...media
-      }
-    }
-    eventFields {
-        date
-        time
-        venue
-        phone
-        address
-    }
-  `
-  );
-
-  return {
-    notFound: event === null,
-    props: {
-      global: global,
-      event: event,
-      seo: event?.seo,
-    },
-    revalidate: 10,
-  };
-};
-
-export const getStaticPaths: GetStaticPaths = async () => {
+export async function generateStaticParams() {
   const posts = await getAllPosts("events");
 
-  return {
-    paths:
-      posts.map(
-        ({ node }: { node: { slug: string } }) => `/events/${node.slug}`
-      ) || [],
-    fallback: "blocking",
-  };
-};
+  return posts.map((post: any) => {
+    slug: post.node.slug
+  });
+}

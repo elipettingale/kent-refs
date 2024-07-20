@@ -1,7 +1,5 @@
 import Banner from "@/components/blocks/Banner";
 import Card from "@/components/common/Card";
-import { getGlobal } from "@/src/lib/api";
-import { GetStaticProps } from "next";
 
 export default function Error404() {
   return (
@@ -18,13 +16,8 @@ export default function Error404() {
   );
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const global = await getGlobal();
-
+export async function generateMetadata({ params }: any) {
   return {
-    props: {
-      global: global,
-    },
-    revalidate: 10,
-  };
-};
+    title: '404'
+  }
+}

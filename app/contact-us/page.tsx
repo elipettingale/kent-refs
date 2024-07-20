@@ -2,7 +2,7 @@ import Banner from "@/components/blocks/Banner";
 import GravityForm from "@/components/blocks/GravityForm";
 import Card from "@/components/common/Card";
 import { getPageBySlug, getPageSEOBySlug } from "@/src/lib/api";
-import { renderContent } from "@/src/lib/helpers";
+import { metadata, renderContent } from "@/src/lib/helpers";
 
 export default async function Page() {
   const page = await getPageBySlug(
@@ -38,13 +38,5 @@ export default async function Page() {
 
 export async function generateMetadata() {
   const seo = await getPageSEOBySlug("/contact-us");
-
-  return {
-    title: seo.title,
-    description: seo.metaDesc,
-    openGraph: {
-      title: seo.opengraphTitle,
-      description: seo.opengraphDescription
-    }
-  };
+  return metadata(seo);
 }
