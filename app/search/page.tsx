@@ -1,5 +1,6 @@
 import Banner from "@/components/blocks/Banner";
 import SearchResults from "@/components/common/SearchResults";
+import { getPageSEOBySlug } from "@/src/lib/api";
 import { Suspense } from "react";
 
 export default function Page() {
@@ -21,6 +22,6 @@ export default function Page() {
 
 export async function generateMetadata() {
   return {
-    title: 'Search'
+    title: 'Search - Kent Refs'
   };
 }
