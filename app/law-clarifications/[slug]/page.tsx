@@ -29,11 +29,9 @@ export default async function Page({ params }: any) {
 export const generateStaticParams: GetStaticPaths = async () => {
   const posts = await getAllPosts("laws");
 
-  return {
-    paths:
-      posts.map(
-        ({ node }: { node: { slug: string } }) => `/laws/${node.slug}`
-      ) || [],
-    fallback: "blocking",
-  };
+  return posts.map(({ node }: any) => {
+    return {
+      slug: node.slug
+    }
+  });
 };
