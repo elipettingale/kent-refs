@@ -71,7 +71,7 @@ export default function LatestNewsAndEvents({ posts, events }: Props) {
               })}
             >
               {index === 0 && (
-                <div className="relative aspect-[5/3]">
+                <div className="relative aspect-[4/3]">
                   <Image
                     src={event.featuredImage.node.sourceUrl}
                     alt={event.featuredImage.node.altText}
